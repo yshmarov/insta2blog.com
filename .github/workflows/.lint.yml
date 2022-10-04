@@ -6,7 +6,6 @@ jobs:
   lint:
     name: all linters
     runs-on: ubuntu-latest
-    needs: install-cache
     strategy:
       fail-fast: false
     steps:
