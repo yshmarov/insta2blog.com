@@ -1,0 +1,36 @@
+require: 
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.1.2
+  Exclude:
+    - vendor/bundle/**/*
+    - '**/db/schema.rb'
+    - '**/db/**/*'
+    - 'config/**/*'
+    - 'bin/*'
+    - 'config.ru'
+    - 'Rakefile'
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+  
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
