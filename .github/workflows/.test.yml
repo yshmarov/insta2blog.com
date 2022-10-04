@@ -56,7 +56,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/superails_test
+          DATABASE_URL: postgres://postgres:password@localhost:5432/app_test
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bin/rails tailwindcss:build
@@ -68,6 +68,6 @@ jobs:
       - name: Smoke test database seeds
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/superails_test
+          DATABASE_URL: postgres://postgres:password@localhost:5432/app_test
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rails db:reset
