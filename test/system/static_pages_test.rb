@@ -4,6 +4,6 @@ class StaticPagesTest < ApplicationSystemTestCase
   test "visiting the homepage" do
     visit root_url
 
-    assert_text "insta2site"
+    assert_text "insta2blog"
   end
 end
