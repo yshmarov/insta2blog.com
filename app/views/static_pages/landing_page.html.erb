@@ -2,6 +2,5 @@
   <h1 class="font-bold text-4xl">StaticPages#landing_page</h1>
   <p>Find me in app/views/static_pages/landing_page.html.erb</p>
 </div>
-
-
 <%= link_to "Instagram login", authorize_path %>
+<%= Rails.application.credentials.dig(:app_name) %>
