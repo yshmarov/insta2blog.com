@@ -1,0 +1,2 @@
+class InstagramAccessToken < ApplicationRecord
+end

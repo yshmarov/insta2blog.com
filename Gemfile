@@ -74,3 +74,9 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem "instagram_basic_display", "~> 0.2.0"
+
+gem "dotenv-rails", "~> 2.8"
+
+gem "faraday", "~> 2.6"
