@@ -64,10 +64,10 @@ class InstagramController < ApplicationController
         )
         render json: { message: 'ok' }, status: :ok
       else
-        render json: { error: "#{res.body}" }, status: res.status
+        render json: { error: res.body.to_s }, status: res.status
       end
     else
-      render json: { error: "#{response.body}" }, status: response.status
+      render json: { error: response.body.to_s }, status: response.status
     end
   end
 
