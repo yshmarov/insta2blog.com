@@ -4,7 +4,8 @@ class InstagramController < ApplicationController
 
   # CLIENT_ID = ENV.fetch('INSTAGRAM_CLIENT_ID', nil)
   # CLIENT_SECRET = ENV.fetch('INSTAGRAM_CLIENT_SECRET', nil)
-  REDIRECT_URI = ENV.fetch('INSTAGRAM_REDIRECT_URI', nil)
+  REDIRECT_URI = "https://insta2site.herokuapp.com/"
+  # REDIRECT_URI=https://insta2site.herokuapp.com/callback
   # REDIRECT_URI = url_for(instagram_callback_path, base_url: true)
 
   # Rails.application.routes.url_helpers.url_for(callback_path, only_path: false)
@@ -22,16 +23,6 @@ class InstagramController < ApplicationController
     authorize_url = 'https://api.instagram.com/oauth/authorize'
     redirect_to "#{authorize_url}?client_id=#{CLIENT_ID}&redirect_uri=#{REDIRECT_URI}&scope=user_profile,user_media&response_type=code",
                 allow_other_host: true
-  end
-
-  def media
-    access_token = InstagramAccessToken.last.access_token
-    response = Faraday.get("#{graph_base_url}/me/media") do |req|
-      req.headers = headers,
-                    req.params = media_params(access_token)
-    end
-
-    render json: response.body
   end
 
   def callback
@@ -77,6 +68,16 @@ class InstagramController < ApplicationController
     response = Faraday.get("#{graph_base_url}/me") do |req|
       req.headers = headers, req.params = user_params
     end
+    render json: response.body
+  end
+
+  def media
+    access_token = InstagramAccessToken.last.access_token
+    response = Faraday.get("#{graph_base_url}/me/media") do |req|
+      req.headers = headers,
+                    req.params = media_params(access_token)
+    end
+
     render json: response.body
   end
 
