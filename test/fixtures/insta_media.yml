@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  remote_id: 
+  caption: MyText
+  media_type: MyString
+  media_url: MyText
+  permalink: MyText
+  timestamp: 2022-10-16 21:14:20
+  insta_user: one
+
+two:
+  remote_id: 
+  caption: MyText
+  media_type: MyString
+  media_url: MyText
+  permalink: MyText
+  timestamp: 2022-10-16 21:14:20
+  insta_user: two
