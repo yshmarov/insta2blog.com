@@ -1,0 +1,2 @@
+class InstaUser < ApplicationRecord
+end
