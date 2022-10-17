@@ -1,6 +1,6 @@
-class CreateInstaMedia < ActiveRecord::Migration[7.0]
+class CreateInstaPosts < ActiveRecord::Migration[7.0]
   def change
-    create_table :insta_media do |t|
+    create_table :insta_posts do |t|
       t.bigint :remote_id
       t.text :caption
       t.string :media_type

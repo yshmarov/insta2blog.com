@@ -2,14 +2,12 @@
 
 one:
   remote_id: 1
-  caption: MyTexta
+  caption: MyText
   media_type: MyString
   media_url: MyText
   permalink: MyText
-  timestamp: 2022-10-16 21:14:20
+  timestamp: 2022-10-17 13:43:51
   insta_user_id: 1
-  created_at: <%= Time.now %>
-  updated_at: <%= Time.now %>
 
 two:
   remote_id: 2
@@ -17,7 +15,5 @@ two:
   media_type: MyString
   media_url: MyText
   permalink: MyText
-  timestamp: 2022-10-16 21:14:20
-  insta_user_id: 1
-  created_at: <%= Time.now %>
-  updated_at: <%= Time.now %>
+  timestamp: 2022-10-17 13:43:51
+  insta_user_id: 2

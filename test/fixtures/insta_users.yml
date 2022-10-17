@@ -3,13 +3,13 @@
 one:
   id: 1
   remote_id: 1
-  username: MyString
+  username: yaro
   account_type: MyString
-  media_count: 1
+  media_count: 300
 
 two:
   id: 2
   remote_id: 2
-  username: MyString
+  username: yuli
   account_type: MyString
-  media_count: 1
+  media_count: 1000

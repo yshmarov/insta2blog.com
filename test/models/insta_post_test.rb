@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InstaMediaTest < ActiveSupport::TestCase
+class InstaPostTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
