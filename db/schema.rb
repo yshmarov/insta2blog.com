@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_114351) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_120109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_114351) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["insta_user_id"], name: "index_insta_posts_on_insta_user_id"
+    t.index ["remote_id"], name: "index_insta_posts_on_remote_id", unique: true
   end
 
   create_table "insta_users", force: :cascade do |t|
@@ -41,6 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_114351) do
     t.integer "media_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["remote_id"], name: "index_insta_users_on_remote_id", unique: true
+    t.index ["username"], name: "index_insta_users_on_username", unique: true
   end
 
   add_foreign_key "insta_posts", "insta_users"
