@@ -14,6 +14,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_191420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "insta_access_tokens", force: :cascade do |t|
+    t.string "access_token"
+    t.integer "expires_in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "insta_media", force: :cascade do |t|
     t.bigint "remote_id"
     t.text "caption"
@@ -31,13 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_191420) do
     t.bigint "remote_id"
     t.string "username"
     t.string "account_type"
-    t.integer "media_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "instagram_access_tokens", force: :cascade do |t|
-    t.string "access_token"
+    t.integer "media_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

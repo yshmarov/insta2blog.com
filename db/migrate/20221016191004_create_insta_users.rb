@@ -4,7 +4,7 @@ class CreateInstaUsers < ActiveRecord::Migration[7.0]
       t.bigint :remote_id
       t.string :username
       t.string :account_type
-      t.integer :media_count
+      t.integer :media_count, default: 0, null: false
 
       t.timestamps
     end
