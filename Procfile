@@ -1,2 +1,2 @@
-web: bundle exec rails s
-release: rails db:migrate
+web: bin/rails server
+css: bin/rails tailwindcss:watch
