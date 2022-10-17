@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  remote_id: 
+  id: 1
+  remote_id: 1
   username: MyString
   account_type: MyString
   media_count: 1
 
 two:
-  remote_id: 
+  id: 2
+  remote_id: 2
   username: MyString
   account_type: MyString
   media_count: 1

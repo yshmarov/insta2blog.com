@@ -2,7 +2,7 @@ class InstagramController < ApplicationController
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
 
-  REDIRECT_URI = 'https://insta2site.herokuapp.com/instagram/callback/'
+  REDIRECT_URI = 'https://insta2site.herokuapp.com/instagram/callback/'.freeze
   # include Rails.application.routes.url_helpers
   # REDIRECT_URI = url_for(instagram_callback_path, base_url: true)
   # REDIRECT_URI = url_for(instagram_callback_path, only_path: false, protocol: 'https')
@@ -35,7 +35,7 @@ class InstagramController < ApplicationController
     if access_token
       res = Faraday.get("#{graph_base_url}/access_token") do |req|
         req.headers = headers,
-        req.params = long_lived_access_token_params(access_token)
+                      req.params = long_lived_access_token_params(access_token)
       end
 
       long_lived_data = JSON.parse(res.body)
