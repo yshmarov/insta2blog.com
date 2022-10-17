@@ -6,7 +6,7 @@ class InstagramController < ApplicationController
   # REDIRECT_URI = 'https://stingray-app-bl8lk.ondigitalocean.app/instagram/callback'.freeze
   # HOST = "octopus-app-s5yrt.ondigitalocean.app"
   HOST = 'https://stingray-app-bl8lk.ondigitalocean.app'.freeze
-  REDIRECT_URI = Rails.application.routes.url_helpers.url_for(
+  REDIRECT_URI = url_for(
     controller: 'instagram',
     action: 'callback',
     protocol: 'https',
