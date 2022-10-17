@@ -5,13 +5,11 @@ class InstagramController < ApplicationController
   # config.action_controller.default_url_options = { host: 'localhost', port: 3000 }
   # REDIRECT_URI = 'https://insta2site.herokuapp.com/instagram/callback/'.freeze
   HOST = "octopus-app-s5yrt.ondigitalocean.app"
-  include Rails.application.routes.url_helpers
-  REDIRECT_URI = url_for(
+  REDIRECT_URI = Rails.application.routes.url_helpers.url_for(
     controller: 'instagram',
     action: 'callback',
     protocol: 'https',
     host: HOST,
-    # host: 'superails.com',
     only_path: false
   )
 
