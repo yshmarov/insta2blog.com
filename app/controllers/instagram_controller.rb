@@ -14,12 +14,12 @@ class InstagramController < ApplicationController
   #   host: HOST,
   #   only_path: false
   # ).freeze
-  REDIRECT_URI = instagram_callback_url
+  # REDIRECT_URI = instagram_callback_url
 
   def authorize
     # Link to log in with instagram.
     authorize_url = 'https://api.instagram.com/oauth/authorize'
-    redirect_to "#{authorize_url}?client_id=#{CLIENT_ID}&redirect_uri=#{REDIRECT_URI}&scope=user_profile,user_media&response_type=code",
+    redirect_to "#{authorize_url}?client_id=#{CLIENT_ID}&redirect_uri=#{instagram_callback_url}&scope=user_profile,user_media&response_type=code",
                 allow_other_host: true
   end
 
@@ -133,7 +133,7 @@ class InstagramController < ApplicationController
       client_secret: CLIENT_SECRET,
       code:,
       grant_type: 'authorization_code',
-      redirect_uri: REDIRECT_URI
+      redirect_uri: instagram_callback_url
     }
   end
 
