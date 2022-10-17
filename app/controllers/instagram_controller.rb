@@ -2,10 +2,18 @@ class InstagramController < ApplicationController
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
 
-  REDIRECT_URI = 'https://insta2site.herokuapp.com/instagram/callback/'.freeze
-  # include Rails.application.routes.url_helpers
-  # REDIRECT_URI = url_for(instagram_callback_path, base_url: true)
-  # REDIRECT_URI = url_for(instagram_callback_path, only_path: false, protocol: 'https')
+  # config.action_controller.default_url_options = { host: 'localhost', port: 3000 }
+  # REDIRECT_URI = 'https://insta2site.herokuapp.com/instagram/callback/'.freeze
+  HOST = "octopus-app-s5yrt.ondigitalocean.app"
+  include Rails.application.routes.url_helpers
+  REDIRECT_URI = url_for(
+    controller: 'instagram',
+    action: 'callback',
+    protocol: 'https',
+    host: HOST,
+    # host: 'superails.com',
+    only_path: false
+  )
 
   def authorize
     # Link to log in with instagram.
