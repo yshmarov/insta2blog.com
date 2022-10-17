@@ -73,7 +73,6 @@ class InstagramController < ApplicationController
   end
 
   def me
-    binding.b
     insta_access_token = InstaAccessToken.find_by(access_token: cookies[:c_token])
     # get user data
     response = Faraday.get("#{graph_base_url}/me") do |req|
