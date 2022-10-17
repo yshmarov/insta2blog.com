@@ -44,7 +44,10 @@ class InstagramController < ApplicationController
       long_lived_access_token = long_lived_data['access_token']
 
       if long_lived_access_token
-        session[:s_token] = long_lived_access_token
+        # https://binarysolo.chapter24.blog/demystifying-cookies-in-rails-6/
+        # session[:s_token] = long_lived_access_token
+        # cookies.signed[:s_token] = long_lived_access_token
+        # cookies.encrypted[:e_token] = long_lived_access_token
         cookies[:c_token] = long_lived_access_token
         InstaAccessToken.create(
           access_token: long_lived_access_token,
@@ -61,11 +64,11 @@ class InstagramController < ApplicationController
   end
 
   def me
-    access_token = InstaAccessToken.find_by(access_token: cookies[:c_token])
+    insta_access_token = InstaAccessToken.find_by(access_token: cookies[:c_token])
     # get user data
     response = Faraday.get("#{graph_base_url}/me") do |req|
       req.headers = headers,
-                    req.params = user_params(access_token)
+                    req.params = user_params(insta_access_token.access_token)
     end
 
     # generate user from data
