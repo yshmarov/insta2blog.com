@@ -1,2 +1,2 @@
-class InstagramAccessToken < ApplicationRecord
+class InstaAccessToken < ApplicationRecord
 end
