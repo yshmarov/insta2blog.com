@@ -101,7 +101,7 @@ class InstagramController < ApplicationController
     insta_access_token = InstaAccessToken.find_by(access_token: cookies[:c_token])
     response = Faraday.get("#{graph_base_url}/me/media") do |req|
       req.headers = headers,
-                    req.params = user_params(insta_access_token.access_token)
+                    req.params = media_params(insta_access_token.access_token)
     end
 
     # InstaUser.find_by()
