@@ -75,6 +75,5 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'instagram_basic_display', '~> 0.2.0'
 
 gem 'faraday', '~> 2.6'
