@@ -1,0 +1,2 @@
+class InstaAccessToken < ApplicationRecord
+end

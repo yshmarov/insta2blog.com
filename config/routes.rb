@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   get 'pricing', to: 'static_pages#pricing'
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
+
+  get 'instagram/authorize', to: "instagram#authorize"
+  get 'instagram/callback', to: "instagram#callback"
+  get 'me', to: "instagram#me"
+  get 'me/media', to: "instagram#media"
 end
