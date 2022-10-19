@@ -15,3 +15,5 @@ jobs:
           bundler-cache: true
       - name: rubocop
         run: bundle exec rubocop --parallel
+      - name: erb-lint
+        run: bundle exec erblint --lint-all
