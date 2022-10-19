@@ -75,5 +75,4 @@ group :test do
   gem 'webdrivers'
 end
 
-
 gem 'faraday', '~> 2.6'

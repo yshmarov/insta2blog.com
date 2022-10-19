@@ -1,8 +1,9 @@
 class InstaRefreshTokenService
+  # TODO: finish and integrate the service
   # https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens
   def call(access_token)
     # access_token = InstaAccessToken.last.access_token
-    response = Faraday.get('https://graph.instagram.com/refresh_access_token') do |req|
+    Faraday.get('https://graph.instagram.com/refresh_access_token') do |req|
       req.headers = headers,
                     req.params = params(access_token)
     end

@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength, Layout/LineLength, Metrics/AbcSize, Metrics/MethodLength
 class InstagramController < ApplicationController
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
@@ -144,3 +145,4 @@ class InstagramController < ApplicationController
     }
   end
 end
+# rubocop:enable Metrics/ClassLength, Layout/LineLength, Metrics/AbcSize, Metrics/MethodLength
