@@ -6,6 +6,7 @@ class CreateInstaPosts < ActiveRecord::Migration[7.0]
       t.string :media_type
       t.text :media_url
       t.text :permalink
+      t.text :thumbnail_url
       t.datetime :timestamp
       t.references :insta_user, null: false, foreign_key: true
 

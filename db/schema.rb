@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_120109) do
     t.string "media_type"
     t.text "media_url"
     t.text "permalink"
+    t.text "thumbnail_url"
     t.datetime "timestamp"
     t.bigint "insta_user_id", null: false
     t.datetime "created_at", null: false
