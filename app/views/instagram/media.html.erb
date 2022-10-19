@@ -1,13 +1,13 @@
 <% @records.each do |record| %>
-  <%= image_tag record["media_url"], style: "width: 30%" %>
+  <%= image_tag record['media_url'], style: 'width: 30%' %>
   <p>
-    <%= record["caption"] %>
+    <%= record['caption'] %>
   </p>
   <p>
-    <%= link_to record["id"], record["permalink"] %>
+    <%= link_to record['id'], record['permalink'] %>
   </p>
   <p>
-    <%= record["timestamp"] %>
+    <%= record['timestamp'] %>
   </p>
   <%#= record["media_type"] %>
   <%#= record["username"] %>
