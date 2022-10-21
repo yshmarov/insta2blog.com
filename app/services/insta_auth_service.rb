@@ -19,7 +19,6 @@ class InstaAuthService
     long_lived_access_token = ask_long_lived_access_token(short_lived_access_token)
     insta_access_token = InstaAccessToken.create(long_lived_access_token)
     insta_user_data = ask_user_profile(insta_access_token)
-    # {"id"=>"5973192396032263", "username"=>"yaro_the_slav", "account_type"=>"PERSONAL", "media_count"=>305}
     insta_user = InstaUser.find_or_create_by(remote_id: insta_user_data['id'])
     insta_user.update(
       username: insta_user_data['username'],
@@ -82,6 +81,7 @@ class InstaAuthService
                     req.params = user_params(insta_access_token.access_token)
     end
     JSON.parse(response.body)
+    # {"id"=>"5973192396032263", "username"=>"yaro_the_slav", "account_type"=>"PERSONAL", "media_count"=>305}
   end
 
   def user_params(access_token)
