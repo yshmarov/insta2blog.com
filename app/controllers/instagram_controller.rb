@@ -6,7 +6,8 @@ class InstagramController < ApplicationController
                  else
                    # staging
                    # 'localhost:3000/instagram/callback/'
-                   'https://insta2blog.com/instagram/callback'
+                   # 'https://insta2blog.com/instagram/callback'
+                   'https://insta2site.herokuapp.com/'
                  end
 
   # GET /instagram/authorize
