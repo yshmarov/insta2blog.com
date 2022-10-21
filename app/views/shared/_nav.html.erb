@@ -2,6 +2,11 @@
   <strong>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
   </strong>
-  <%= link_to 'Instagram login', instagram_authorize_path %>
   <%= link_to 'Insta users', insta_users_path %>
+  <% if current_user %>
+    <%= link_to current_user.username, insta_user_path(current_user) %>
+    <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to 'Instagram login', instagram_authorize_path %>
+  <% end %>
 </div>
