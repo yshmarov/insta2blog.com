@@ -1,16 +1,13 @@
-# do I need insta_redirect_url here?
-# will the long token id be replaced?
-# code = "AQCasuw"
-# InstaAuthService.new(code, 'https://insta2site.herokuapp.com/')
+# InstaAuthService.new('AQCasuw', 'https://insta2blog.com/instagram/callback')
 class InstaAuthService
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
 
-  attr_reader :code, :insta_redirect_url
+  attr_reader :code, :redirect_uri
 
-  def initialize(code, insta_redirect_url)
+  def initialize(code, redirect_uri)
     @code = code
-    @insta_redirect_url = insta_redirect_url
+    @redirect_uri = redirect_uri
   end
 
   def call
@@ -25,6 +22,7 @@ class InstaAuthService
       account_type: insta_user_data['account_type'],
       media_count: insta_user_data['media_count']
     )
+    # will the long token id be replaced?
     # associate insta_access_token with insta_user
     # schedule job to create insta_user_media
     insta_user.id
@@ -52,7 +50,7 @@ class InstaAuthService
       client_secret: CLIENT_SECRET,
       code:,
       grant_type: 'authorization_code',
-      redirect_uri: insta_redirect_url
+      redirect_uri:
     }
   end
 

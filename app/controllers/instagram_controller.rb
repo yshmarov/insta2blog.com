@@ -4,10 +4,12 @@ class InstagramController < ApplicationController
   REDIRECT_URI = if Rails.env.production?
                    instagram_callback_url
                  else
-                   'https://insta2site.herokuapp.com/'
-                   # 'https://insta2blog.com/instagram/callback'
+                   # staging
+                   # 'localhost:3000/instagram/callback/'
+                   'https://insta2blog.com/instagram/callback'
                  end
 
+  # GET /instagram/authorize
   def authorize
     # Link to log in with instagram.
     authorize_url = 'https://api.instagram.com/oauth/authorize'
@@ -18,13 +20,13 @@ class InstagramController < ApplicationController
   # GET /instagram/callback/?code=
   def callback
     # Log in with instagram -> get authorization code via redirect callback.
-    # "localhost:3000/instagram/callback/"
     code = params[:code]
     return head :bad_request unless code
 
     insta_user_id = InstaAuthService.new(code, REDIRECT_URI).call
     # return head :bad_request unless insta_user
 
+    # basic authentication could be held here
     # https://binarysolo.chapter24.blog/demystifying-cookies-in-rails-6/
     # session[:s_token] = long_lived_access_token
     # cookies.signed[:s_token] = long_lived_access_token
