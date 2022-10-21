@@ -11,7 +11,6 @@ class InstaAuthService
   def initialize(code, insta_redirect_url)
     @code = code
     @insta_redirect_url = insta_redirect_url
-    call
   end
 
   def call
