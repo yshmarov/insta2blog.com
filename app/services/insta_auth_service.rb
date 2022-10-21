@@ -22,9 +22,9 @@ class InstaAuthService
       account_type: insta_user_data['account_type'],
       media_count: insta_user_data['media_count']
     )
-    # will the long token id be replaced?
-    # associate insta_access_token with insta_user
+    insta_access_token.update(insta_user_id: insta_user.id)
     # schedule job to create insta_user_media
+    # InstaMediaService.new(long_lived_access_token).call
     insta_user.id
   end
 

@@ -1,11 +1,14 @@
+# can I still use previous token to make an API call?
+# https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens#long-lived-access-tokens
+
 # insta_access_token = InstaAccessToken.last
 # new_long_lived_access_token = InstaRefreshTokenService.new(insta_access_token).call
 class InstaRefreshTokenService
-  # https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens#long-lived-access-tokens
-  attr_reader :insta_access_token
+  attr_reader :insta_access_token, :insta_user
 
   def initialize(insta_access_token)
     @insta_access_token = insta_access_token
+    @insta_user = insta_access_token.insta_user
   end
 
   def call
@@ -18,8 +21,9 @@ class InstaRefreshTokenService
     data = JSON.parse(response.body)
     # if success
     #   new_insta_access_token = InstaAccessToken.create(data.except('token_type'))
-    #   attach new token to user
-    #   insta_access_token.invalidate!
+    #   new_insta_access_token.update(insta_user_id: insta_user.id)
+    #   insta_access_token.update(valid: false)
+    #   insta_access_token.destroy
     # end
   end
 
