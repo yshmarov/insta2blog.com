@@ -18,7 +18,7 @@ class InstaRefreshTokenService
                     req.params = params(insta_access_token.access_token)
     end
     # {"access_token"=> "UXE5RDNR", "token_type"=>"bearer", "expires_in"=>5143192}
-    data = JSON.parse(response.body)
+    JSON.parse(response.body)
     # if success
     #   new_insta_access_token = InstaAccessToken.create(data.except('token_type'))
     #   new_insta_access_token.update(insta_user_id: insta_user.id)

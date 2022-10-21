@@ -34,3 +34,5 @@ Lint/UnusedMethodArgument:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Layout/LineLength:
+  Max: 136

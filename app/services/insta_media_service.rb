@@ -20,7 +20,7 @@ class InstaMediaService
                         request.params = media_params(insta_access_token.access_token)
     end
 
-    body = JSON.parse(response.body)
+    JSON.parse(response.body)
 
     # interate through all pages of records
     # if body['next_link'].present?
