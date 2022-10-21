@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  sessions:
+    logout:
+      success: You have logged out
