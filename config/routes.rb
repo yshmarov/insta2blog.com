@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'instagram/authorize', to: "instagram#authorize"
   get 'instagram/callback', to: "instagram#callback"
-  get 'me', to: "instagram#me"
-  get 'me/media', to: "instagram#media"
+
+  get 'insta_users/:id', to: 'insta_users#show', as: :insta_user
+  get 'insta_users', to: 'insta_users#index', as: :insta_users
+  get 'insta_users/:id/posts', to: 'insta_users#posts', as: :insta_user_posts
 end

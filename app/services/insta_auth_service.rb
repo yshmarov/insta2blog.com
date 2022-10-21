@@ -1,4 +1,6 @@
-# InstaAuthService.new('AQCasuw', 'https://insta2blog.com/instagram/callback').call
+# code = 'AQCasuw'
+# redirect_uri = 'https://insta2blog.com/instagram/callback'
+# insta_user_id = InstaAuthService.new(code, redirect_uri).call
 class InstaAuthService
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
