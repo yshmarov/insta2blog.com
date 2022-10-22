@@ -81,3 +81,5 @@ gem 'faraday', '~> 2.6'
 gem 'friendly_id', '~> 5.4'
 
 gem 'data_migrate', '~> 8.1'
+
+gem 'meta-tags', '~> 2.18'
