@@ -4,6 +4,7 @@ class InstaPostsController < ApplicationController
   def index
     # should not be called here. should be some button to "import" that would trigger a job.
     InstaMediaService.new(@insta_user).call unless Rails.env.development? # faster when not needed for now.
+    # InstaMediaService.new(@insta_user).call
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     @posts = if params[:caption].present?
