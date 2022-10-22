@@ -4,4 +4,7 @@ class InstaUser < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :remote_id, presence: true, uniqueness: true
   # enum account_types: { BUSINESS, MEDIA_CREATOR, PERSONAL }
+
+  extend FriendlyId
+  friendly_id :username, use: %i[finders]
 end

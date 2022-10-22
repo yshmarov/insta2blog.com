@@ -77,3 +77,5 @@ group :test do
 end
 
 gem 'faraday', '~> 2.6'
+
+gem "friendly_id", "~> 5.4"
