@@ -27,12 +27,7 @@ class InstagramController < ApplicationController
     insta_user_id = InstaAuthService.new(code, REDIRECT_URI).call
     # return head :bad_request unless insta_user
 
-    # basic authentication could be held here
-    # https://binarysolo.chapter24.blog/demystifying-cookies-in-rails-6/
-    # session[:s_token] = long_lived_access_token
-    # cookies.signed[:s_token] = long_lived_access_token
-    # cookies.encrypted[:e_token] = long_lived_access_token
-    # cookies[:c_token] = insta_user.insta_access_token.access_token
+    session[:insta_user_id] = insta_user_id
 
     redirect_to insta_user_path(insta_user_id)
   end
