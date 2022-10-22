@@ -16,7 +16,7 @@
       🕚 <%= post.timestamp.to_fs(:long) %>
     </p>
     <p>
-      🔗 <%= link_to post.remote_id, post.permalink, target: '_blank' %>
+      🔗 <%= link_to post.remote_id, post.permalink, target: '_blank', rel: 'noopener' %>
     </p>
   </div>
 </article>
