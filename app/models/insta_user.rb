@@ -7,4 +7,8 @@ class InstaUser < ApplicationRecord
 
   extend FriendlyId
   friendly_id :username, use: %i[finders]
+
+  def display_username
+    ['@', username].join
+  end
 end

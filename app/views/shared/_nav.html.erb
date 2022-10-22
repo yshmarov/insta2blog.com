@@ -1,12 +1,12 @@
-<div>
+<nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-10'>
   <strong>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
   </strong>
   <%= link_to 'Insta users', insta_users_path %>
   <% if current_user %>
-    <%= link_to current_user.username, insta_user_path(current_user) %>
+    <%= link_to current_user.display_username, insta_user_path(current_user) %>
     <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
   <% else %>
     <%= link_to 'Instagram login', instagram_authorize_path %>
   <% end %>
-</div>
+</nav>
