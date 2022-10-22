@@ -1,17 +1,19 @@
 class InstaPostsController < ApplicationController
-  before_action :set_user, only: %i[index show]
+  before_action :set_user
 
   def index
-    # should not be called here. should be some button to "import" that would trigger a job.
-    InstaMediaService.new(@insta_user).call unless Rails.env.development? # faster when not needed for now.
-    # InstaMediaService.new(@insta_user).call
-
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     @posts = if params[:caption].present?
                posts.where('caption ilike ?', "%#{params[:caption]}%")
              else
                posts
              end
+  end
+
+  def refresh
+    # TODO: should trigger a job
+    InstaMediaService.new(@insta_user).call
+    redirect_to insta_user_path(@insta_user)
   end
 
   def show
