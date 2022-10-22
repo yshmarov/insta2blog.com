@@ -4,7 +4,7 @@
   </strong>
   <%= link_to '🧭 browse', insta_users_path %>
   <% if current_user %>
-    <%= link_to current_user.display_username, insta_user_path(current_user) %>
+    <%= link_to current_user.at_username, insta_user_path(current_user) %>
     <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
   <% else %>
     <%= link_to 'Instagram login', instagram_authorize_path %>

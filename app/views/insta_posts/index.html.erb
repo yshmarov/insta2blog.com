@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
   <div>
-    <%= @insta_user.display_username %>
+    <%= @insta_user.at_username %>
   </div>
 
   <%= form_with url: insta_user_posts_path(@insta_user),
@@ -9,7 +9,7 @@
                         debounce_target: 'form',
                         turbo_frame: 'results' } do |form| %>
     <%= form.text_field :caption,
-                        placeholder: 'Caption',
+                        placeholder: 'Find a post',
                         value: params[:caption],
                         autocomplete: 'off',
                         autofocus: true,
