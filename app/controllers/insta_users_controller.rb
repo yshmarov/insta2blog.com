@@ -9,7 +9,10 @@ class InstaUsersController < ApplicationController
   end
 
   def posts
-    @posts = InstaMediaService.new(@insta_user).call['data']
+    # should not be called here. should be some button to "import" that would trigger a job.
+    InstaMediaService.new(@insta_user).call
+
+    @posts = InstaPost.carousel_album.order(timestamp: :desc)
   end
 
   private
