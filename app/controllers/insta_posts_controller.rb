@@ -22,5 +22,11 @@ class InstaPostsController < ApplicationController
 
   def set_user
     @insta_user = InstaUser.find(params[:id])
+    seo_tags
+  end
+
+  def seo_tags
+    set_meta_tags title: @insta_user.username,
+                  description: "#{@insta_user.username} blog website"
   end
 end
