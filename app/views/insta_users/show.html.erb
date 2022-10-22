@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
   <div>
-    <%= @insta_user.at_username %>
+    <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
   </div>
 
   <% if @insta_user.insta_posts.none? %>
@@ -14,15 +14,27 @@
         Click 'Import' to continue!
       </p>
     </div>
-  <% end %>
-
-  <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-    <span>🔑 Import posts</span>
-  <% end %>
-
-  <% if @insta_user.insta_posts.any? %>
+  <% else %>
+    <div class='text-center'>
+      <p>
+        Don't see your latest posts in the feed?
+      </p>
+      <p>
+        Click <strong>Import</strong>!
+      </p>
+        Your posts are refreshed only when you click <strong>Import</strong>.
+      </p>
+      <p>
+        To automatically refresh posts, check our
+        <%= link_to 'Pricing', pricing_path %>.
+      </p>
+    </div>
     <%= link_to insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
       🖼 Posts: <%= @insta_user.insta_posts_count %>
     <% end %>
+  <% end %>
+
+  <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+    <span>▶️ Import posts</span>
   <% end %>
 </div>
