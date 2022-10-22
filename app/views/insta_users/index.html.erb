@@ -5,6 +5,6 @@
 
 <% @insta_user.each do |insta_user| %>
   <div>
-    <%= link_to insta_user.username, insta_user_path(insta_user) %>
+    <%= link_to insta_user.display_username, insta_user_path(insta_user) %>
   </div>
 <% end %>

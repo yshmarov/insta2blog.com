@@ -12,10 +12,14 @@
   </head>
 
   <body>
-    <%= render 'shared/flash' %>
+    <header>
+      <%= render 'shared/flash' %>
+    </header>
     <%= render 'shared/nav' %>
-    <main class='p-4'>
+    <main class='p-4 bg-slate-100'>
       <%= yield %>
     </main>
   </body>
+  <%# unless infinite scroll page %>
+  <%= render 'shared/footer' %>
 </html>
