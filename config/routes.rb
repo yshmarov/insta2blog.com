@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   delete "logout", to: "sessions#logout", as: :logout
 
-  get 'insta_users/:id', to: 'insta_users#show', as: :insta_user
-  get 'insta_users', to: 'insta_users#index', as: :insta_users
-  get 'insta_users/:id/posts', to: 'insta_posts#index', as: :insta_user_posts
-  get 'insta_users/:id/posts/:post_id', to: 'insta_posts#show', as: :insta_user_post
+  get 'u/:id', to: 'insta_users#show', as: :insta_user
+  get 'u', to: 'insta_users#index', as: :insta_users
+  get 'u/:id/p', to: 'insta_posts#index', as: :insta_user_posts
+  get 'u/:id/p/:post_id', to: 'insta_posts#show', as: :insta_user_post
 end
