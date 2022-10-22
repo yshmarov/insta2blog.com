@@ -6,7 +6,7 @@ class InstaUser < ApplicationRecord
   # enum account_types: { BUSINESS, MEDIA_CREATOR, PERSONAL }
 
   extend FriendlyId
-  friendly_id :username, use: %i[finders]
+  friendly_id :username, use: %i[slugged finders]
 
   def display_username
     ['@', username].join
