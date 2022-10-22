@@ -15,12 +15,12 @@
                           keywords: 'insta2site, instagram, blog', reverse: true %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen bg-slate-100">
     <header>
       <%= render 'shared/flash' %>
+      <%= render 'shared/nav' %>
     </header>
-    <%= render 'shared/nav' %>
-    <main class='p-4 bg-slate-100 break-normal'>
+    <main class='p-4 break-normal'>
       <%= yield %>
     </main>
   </body>
