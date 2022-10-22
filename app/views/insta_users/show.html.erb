@@ -3,13 +3,26 @@
     <%= @insta_user.at_username %>
   </div>
 
-  <%= button_to refresh_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-    <span>🔑 Refresh posts</span>
+  <% if @insta_user.insta_posts.none? %>
+    <div class='text-center'>
+      <p>
+        We have detected
+        <strong><%= @insta_user.media_count %></strong>
+        posts on your instagram feed.
+      </p>
+      <p>
+        Click 'Import' to continue!
+      </p>
+    </div>
+  <% end %>
+
+  <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+    <span>🔑 Import posts</span>
   <% end %>
 
   <% if @insta_user.insta_posts.any? %>
     <%= link_to insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-      🖼 Posts: <%= @insta_user.media_count %>
+      🖼 Posts: <%= @insta_user.insta_posts_count %>
     <% end %>
   <% end %>
 </div>
