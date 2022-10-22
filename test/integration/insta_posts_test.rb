@@ -26,9 +26,9 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'refresh' do
+  test 'import' do
     skip # will stub faraday requests later
-    post refresh_insta_user_posts_path(@user)
+    post import_insta_user_posts_path(@user)
     assert_response :success
   end
 end

@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
   <div>
-    <%= @insta_user.at_username %>
+    <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
   </div>
 
   <%= form_with url: insta_user_posts_path(@insta_user),
