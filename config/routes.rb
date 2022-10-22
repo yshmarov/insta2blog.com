@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get 'insta_users/:id', to: 'insta_users#show', as: :insta_user
   get 'insta_users', to: 'insta_users#index', as: :insta_users
-  get 'insta_users/:id/posts', to: 'insta_users#posts', as: :insta_user_posts
+  get 'insta_users/:id/posts', to: 'insta_posts#index', as: :insta_user_posts
 end

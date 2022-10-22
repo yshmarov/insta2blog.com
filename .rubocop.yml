@@ -36,3 +36,6 @@ Style/FrozenStringLiteralComment:
 
 Layout/LineLength:
   Max: 136
+
+Metrics/MethodLength:
+  Max: 16

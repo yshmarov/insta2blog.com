@@ -12,7 +12,7 @@ class InstaAuthService
     @redirect_uri = redirect_uri
   end
 
-  def call # rubocop:disable Metrics/MethodLength
+  def call
     short_lived_access_token = ask_short_lived_access_token(code)
     # return ? unless short_lived_access_token
     long_lived_access_token = ask_long_lived_access_token(short_lived_access_token)
