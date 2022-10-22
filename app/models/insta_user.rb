@@ -8,7 +8,7 @@ class InstaUser < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: %i[slugged finders]
 
-  def display_username
+  def at_username
     ['@', username].join
   end
 end
