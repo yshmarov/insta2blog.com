@@ -12,7 +12,7 @@
       <span>☺️</span>
       <span class='hidden lg:block'><%= current_user.at_username %></span>
     <% end %>
-    <%= link_to logout_path, data: { turbo_method: :delete }, class: 'flex space-x-2' do %>
+    <%= button_to logout_path, method: :delete, class: 'flex space-x-2', form: { data: { turbo_confirm: "Log out?" } } do %>
       <span>👋</span>
       <span class='hidden lg:block'>Logout</span>
     <% end %>
