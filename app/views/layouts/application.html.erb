@@ -19,7 +19,8 @@
   <body class="flex flex-col min-h-screen bg-slate-100">
     <header>
       <%= render 'shared/nav' %>
-      <div id="flash" style="position:absolute; z-index:2; right:10px; width:200px;">
+      <div id="flash" class="right-2 mt-2 w-56 absolute space-y-2 z-10">
+        <%= render 'shared/flash' %>
         <%= render 'shared/flash' %>
       </div>
     </header>
