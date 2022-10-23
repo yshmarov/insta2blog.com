@@ -10,7 +10,6 @@ class InstaUsersController < ApplicationController
   def show
     set_meta_tags title: @insta_user.username,
                   description: "#{@insta_user.username} blog website"
-    # redirect_to root_path, notice: 'abc'
   end
 
   private
