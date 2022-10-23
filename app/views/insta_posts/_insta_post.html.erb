@@ -25,4 +25,10 @@
     <% end %>
     </p>
   </div>
+  <div data-controller="clipboard">
+    <input data-clipboard-target="source"
+          class="font-extralight text-xs h-6 rounded-md"
+          type="text" value="<%= insta_user_post_url(post.insta_user, post) %>" readonly>
+    <button data-action="clipboard#copy">Copy url</button>
+  </div>
 </article>
