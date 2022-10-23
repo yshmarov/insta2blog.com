@@ -1,7 +1,8 @@
-<nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-10'>
-  <strong>
+<nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6'>
+  <div class='flex items-center font-bold'>
+    <%= image_tag "itos-logo.png", class: 'w-10' %>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
-  </strong>
+  </div>
   <%= link_to '🧭 browse', insta_users_path %>
   <% if current_user %>
     <%= link_to current_user.at_username, insta_user_path(current_user) %>
