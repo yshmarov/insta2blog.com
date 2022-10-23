@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'instagram/authorize', to: "instagram#authorize"
   get 'instagram/callback', to: "instagram#callback"
+  get 'instagram/deauthorize', to: "instagram#deauthorize"
+  get 'instagram/delete', to: "instagram#delete"
 
   delete "logout", to: "sessions#logout", as: :logout
 
