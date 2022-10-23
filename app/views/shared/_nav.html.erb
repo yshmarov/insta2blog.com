@@ -1,11 +1,21 @@
-<nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-10'>
-  <strong>
+<nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6'>
+  <div class='flex items-center font-bold'>
+    <%= image_tag 'itos-logo.png', class: 'w-10' %>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
-  </strong>
-  <%= link_to '🧭 browse', insta_users_path %>
+  </div>
+  <%= link_to insta_users_path, class: 'flex space-x-2' do %>
+    <span>🧭</span>
+    <span class='hidden lg:block'>browse</span>
+  <% end %>
   <% if current_user %>
-    <%= link_to current_user.at_username, insta_user_path(current_user) %>
-    <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+    <%= link_to insta_user_path(current_user), class: 'flex space-x-2' do %>
+      <span>☺️</span>
+      <span class='hidden lg:block'><%= current_user.at_username %></span>
+    <% end %>
+    <%= button_to logout_path, method: :delete, class: 'flex space-x-2', form: { data: { turbo_confirm: 'Log out?' } } do %>
+      <span>👋</span>
+      <span class='hidden lg:block'>Logout</span>
+    <% end %>
   <% else %>
     <%= link_to 'Instagram login', instagram_authorize_path %>
   <% end %>
