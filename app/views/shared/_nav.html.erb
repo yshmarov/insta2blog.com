@@ -1,6 +1,6 @@
 <nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6'>
   <div class='flex items-center font-bold'>
-    <%= image_tag "itos-logo.png", class: 'w-10' %>
+    <%= image_tag 'itos-logo.png', class: 'w-10' %>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
   </div>
   <%= link_to insta_users_path, class: 'flex space-x-2' do %>
@@ -12,7 +12,7 @@
       <span>☺️</span>
       <span class='hidden lg:block'><%= current_user.at_username %></span>
     <% end %>
-    <%= button_to logout_path, method: :delete, class: 'flex space-x-2', form: { data: { turbo_confirm: "Log out?" } } do %>
+    <%= button_to logout_path, method: :delete, class: 'flex space-x-2', form: { data: { turbo_confirm: 'Log out?' } } do %>
       <span>👋</span>
       <span class='hidden lg:block'>Logout</span>
     <% end %>
