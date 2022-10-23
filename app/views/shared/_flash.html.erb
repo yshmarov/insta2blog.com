@@ -1,4 +1,4 @@
-<div id="flash">
+<div data-controller="autohide">
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, id: key %>
   <% end %>

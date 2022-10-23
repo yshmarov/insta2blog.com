@@ -19,7 +19,9 @@
   <body class="flex flex-col min-h-screen bg-slate-100">
     <header>
       <%= render 'shared/nav' %>
-      <%= render 'shared/flash' %>
+      <div id="flash" style="position:absolute; z-index:2; right:10px; width:200px;">
+        <%= render 'shared/flash' %>
+      </div>
     </header>
     <main class='p-4 break-normal'>
       <%= yield %>
