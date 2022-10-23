@@ -3,13 +3,19 @@
     <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
   </div>
 
+  <% unless @insta_user.insta_posts_count.zero? %>
+    <%= link_to insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+      🖼 Posts: <%= @insta_user.insta_posts_count %>
+    <% end %>
+  <% end %>
+
   <% if @insta_user == current_user %>
-    <% if @insta_user.insta_posts.none? %>
+    <% if @insta_user.insta_posts_count.zero? %>
       <div class='text-center'>
         <p>
           We have detected
           <strong><%= @insta_user.media_count %></strong>
-          posts on your instagram feed.
+          accessible posts on your instagram feed.
         </p>
         <p>
           Click 'Import' to continue!
@@ -27,16 +33,13 @@
         </p>
         <p>
           To automatically refresh posts, check our
-          <%= link_to 'Pricing', pricing_path %>.
+          <b><%= link_to 'Pricing', pricing_path %></b>.
         </p>
       </div>
-      <%= link_to insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-        🖼 Posts: <%= @insta_user.insta_posts_count %>
-      <% end %>
     <% end %>
-  <% end %>
 
-  <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-    <span>▶️ Import posts</span>
+    <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+      <span>▶️ Import posts</span>
+    <% end %>
   <% end %>
 </div>
