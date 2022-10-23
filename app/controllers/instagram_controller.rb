@@ -25,11 +25,11 @@ class InstagramController < ApplicationController
   end
 
   def delete
-    render plain: "Please contact yashm@outlook.com to delete your data"
+    render plain: 'Please contact yashm@outlook.com to delete your data'
   end
 
   def deauthorize
-    render plain: "Please contact yashm@outlook.com to deauthorize the app"
+    render plain: 'Please contact yashm@outlook.com to deauthorize the app'
   end
 
   private
