@@ -2,10 +2,10 @@
   <h1 class="font-bold text-4xl">One click blog from your Instagram.</h1>
 
   <% unless current_user %>
-    <%= link_to 'Connect your Instagram', instagram_authorize_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md' %>
+    <%= link_to '🎯 Connect your Instagram', instagram_authorize_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
   <% end %>
 
   <div>
-    <%= link_to 'See example @accounts', insta_users_path, class: 'bg-slate-700 hover:bg-slate-900 text-fuchsia-50 p-4 rounded-md' %>
+    <%= link_to '👀 See examples', insta_users_path, class: 'bg-slate-700 hover:bg-slate-900 text-fuchsia-50 p-4 rounded-md' %>
   </div>
 </div>
