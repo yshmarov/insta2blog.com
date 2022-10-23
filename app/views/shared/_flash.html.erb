@@ -1,4 +1,4 @@
-<div data-controller="autohide">
+<div data-controller="autohide" data-action="click->autohide#dismiss" class="cursor-pointer">
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, id: key %>
   <% end %>
