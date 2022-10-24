@@ -27,7 +27,24 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
   end
 
   test 'import' do
-    skip # will stub faraday requests later
+    conn = Faraday.new do |builder|
+      builder.adapter :test do |stub|
+        stub.get('/https://graph.instagram.com/me/media') do |_env|
+          [
+            200,
+            { Accept: 'application/json' },
+            'shrimp'
+          ]
+        end
+
+        # test exceptions too
+        stub.get('/boom') do
+          raise Faraday::ConnectionFailed
+        end
+      end
+    end
+
+    # skip # will stub faraday requests later
     post import_insta_user_posts_path(@user)
     assert_response :success
   end
