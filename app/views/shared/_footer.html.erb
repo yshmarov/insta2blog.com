@@ -1,18 +1,21 @@
-<footer class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6 w-full mt-auto'>
-  <div class='flex items-center font-bold'>
-    <%= image_tag 'itos-logo.png', class: 'w-10' %>
-    <%= link_to Rails.application.class.module_parent.name, root_path %>
+<footer class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-10 w-full mt-auto'>
+  <div class=''>
+    <strong>
+      <%= link_to Rails.application.class.module_parent.name, root_path %>
+    </strong>
+    <%= link_to 'Terms', terms_path %>
+    <%= link_to 'Privacy', privacy_path %>
+    <%= link_to 'Pricing', pricing_path %>
   </div>
-  <%= link_to pricing_path, class: 'flex space-x-2' do %>
-    <span>🤑</span>
-    <span class='hidden lg:block'>Pricing</span>
-  <% end %>
-  <%= link_to terms_path, class: 'flex space-x-2' do %>
-    <span>📜</span>
-    <span class='hidden lg:block'>Terms</span>
-  <% end %>
-  <%= link_to privacy_path, class: 'flex space-x-2' do %>
-    <span>📃</span>
-    <span class='hidden lg:block'>Privacy</span>
-  <% end %>
+  <div class=''>
+    <br>
+    plausible analytics
+    github
+    Yaroslav Shmarov
+    <%= Time.now.year %>© 
+    All Rights Reserved.
+
+    Instagram
+    Twitter
+  </div>
 </footer>
