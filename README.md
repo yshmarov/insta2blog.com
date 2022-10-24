@@ -1,4 +1,6 @@
-### Why did I create this?
+## [insta2blog.com](https://insta2blog.com)
+
+### ⁉️ Why did I create this?
 
 A few days ago wife `@za.yuliia` was banned from instagram for her 🇺🇦 posts. There was no indication that her account would be restored. She felt awful about it, because she had spent a lot of time creating her page, her posts. Hopefully this tool would give her a reliable data backup that is easy to access.
 
@@ -6,19 +8,19 @@ Another reason would be my sister `@alisa.shmarova` is trying to be a blogger. S
 
 Initially I was inspired with this idea after hearing of some guy who created "Sheets2Site".
 
-### Value proposition
+### 💡 Value proposition
 
 This is a media channel that you completely own. Your own auto-generated website.
 
 Share urls to your posts on the blog to drive traffic to your website. 
 
-### Core features
+### ✔️ Core features
 
 The application let's you "download" a snapshot of your instagram account on a regular basis.
 
 You can search for posts content in the local copy of the account.
 
-### Instagram Basic Display API
+### 🤯 Instagram Basic Display API
 
 Flow of connecting and using Instagram Basic Display API:
 
@@ -36,13 +38,16 @@ Flow of connecting and using Instagram Basic Display API:
 3. Refresh token
 `long_lived_access_token` should be refreshed every 59 days.
 
-API limitations:
-* does not get **comments**
-* does not get **likes**
-* does not get **location**
-* does not get **stories**
+API limitations: it does not get
+* user avatar
+* user description
+* user website
+* media comments
+* media likes
+* media location
+* media stories
 
-### Tech stack
+### 💻 Tech stack
 
 * ruby 3
 * rails 7
@@ -54,7 +59,7 @@ API limitations:
 * sidekiq (coming soon)
 * AWS S3 (coming soon)
 
-### Start the app
+### 🚀 Start the app
 
 Clone app, start server
 
@@ -75,7 +80,6 @@ Add them to your credentials file. Example:
 instagram:
   client_id: 123
   client_secret: abc123
-app_name: insta2blog
 ```
 
 The app uses gem data-migrate. To run data migrations together with regular ones:
@@ -86,8 +90,10 @@ rails db:migrate:with_data
 
 ### 🤝 Contributing
 
-Open an issue with your idea 💡.
+[Check the dev roadmap](https://github.com/users/yshmarov/projects/2)
 
-If I approve it, please create a PR (if you can). Preferably with tests 🙏.
+Got an idea 💡? [Open an issue](https://github.com/yshmarov/insta2blog.com/issues/new).
 
-### Thanks for taking your time, wonderer!
+If you create a PR (if you can), preferably with tests 🙏.
+
+### Thanks for taking your time, wanderer!
