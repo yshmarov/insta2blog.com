@@ -1,7 +1,17 @@
 module ApplicationHelper
-  def with_hashtags(text)
-    return nil if text.blank?
+  def with_hashtags(post)
+    return nil if post.caption.blank?
 
-    text.gsub(/\S*#(\[[^\]]+\]|\S+)/, '<a href="http://localhost:3000/u/za-yuliia/p?caption=\1" class="hashtag">#\1</a>')
+    body = post.caption
+    hashtags = body.scan(/#\w+/)
+    hashtags.flatten.each do |hashtag|
+      hashtag_link =
+        link_to hashtag,
+                insta_user_posts_path(post.insta_user, caption: hashtag),
+                data: { turbo: false },
+                class: 'hashtag'
+      body.gsub!(hashtag, hashtag_link)
+    end
+    body
   end
 end
