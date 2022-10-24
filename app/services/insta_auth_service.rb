@@ -16,13 +16,7 @@ class InstaAuthService
     short_lived_access_token = ask_short_lived_access_token(code)
     long_lived_access_token = ask_long_lived_access_token(short_lived_access_token)
     insta_access_token = InstaAccessToken.create(long_lived_access_token)
-    insta_user_data = ask_user_profile(insta_access_token)
-    insta_user = InstaUser.find_or_initialize_by(username: insta_user_data['username'])
-    insta_user.update(
-      remote_id: insta_user_data['id'],
-      account_type: insta_user_data['account_type'].downcase,
-      media_count: insta_user_data['media_count']
-    )
+    insta_user = InstaMeService.new(insta_access_token.access_token).call
     insta_access_token.update(insta_user_id: insta_user.id)
     # schedule job to create insta_user_media
     # InstaMediaService.new(long_lived_access_token).call
@@ -62,7 +56,6 @@ class InstaAuthService
     end
     data = JSON.parse(response.body)
     # {"access_token"=>"IGQVJ", "token_type"=>"bearer", "expires_in"=>5115900}
-    # data['access_token']
     data.except('token_type')
   end
 
@@ -71,22 +64,6 @@ class InstaAuthService
       grant_type: 'ig_exchange_token',
       client_secret: CLIENT_SECRET,
       access_token: short_lived_access_token
-    }
-  end
-
-  def ask_user_profile(insta_access_token)
-    response = Faraday.get('https://graph.instagram.com/me') do |req|
-      req.headers = headers,
-                    req.params = user_params(insta_access_token.access_token)
-    end
-    JSON.parse(response.body)
-    # {"id"=>"5973192396032263", "username"=>"yaro_the_slav", "account_type"=>"PERSONAL", "media_count"=>305}
-  end
-
-  def user_params(access_token)
-    {
-      fields: 'id,username,account_type,media_count',
-      access_token:
     }
   end
 end
