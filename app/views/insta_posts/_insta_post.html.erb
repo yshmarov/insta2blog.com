@@ -9,7 +9,7 @@
   </div>
   <div>
     <p class='break-normal'>
-      <%= highlight(post.caption, params[:caption]) %>
+      <%= highlight(with_hashtags(post.caption), params[:caption]) %>
     </p>
     <p>
       🕚 <%= post.timestamp.to_fs(:long) %>
