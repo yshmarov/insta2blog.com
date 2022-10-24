@@ -63,7 +63,6 @@ class InstaAuthService
     end
     data = JSON.parse(response.body)
     # {"access_token"=>"IGQVJ", "token_type"=>"bearer", "expires_in"=>5115900}
-    # data['access_token']
     data.except('token_type')
   end
 
