@@ -1,21 +1,32 @@
-<footer class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-10 w-full mt-auto'>
-  <div class=''>
-    <strong>
+<footer class='bg-slate-50 border-t border-slate-300 p-4 w-full mt-auto text-center'>
+  <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
+    <div class='flex items-center font-bold text-center justify-center'>
+      <%= image_tag 'itos-logo.png', class: 'w-10' %>
       <%= link_to Rails.application.class.module_parent.name, root_path %>
-    </strong>
-    <%= link_to 'Terms', terms_path %>
-    <%= link_to 'Privacy', privacy_path %>
-    <%= link_to 'Pricing', pricing_path %>
-  </div>
-  <div class=''>
-    <br>
-    plausible analytics
-    github
-    Yaroslav Shmarov
-    <%= Time.zone.now.year %>© 
-    All Rights Reserved.
-
-    Instagram
-    Twitter
+    </div>
+    <div>
+      <%= link_to '🤑 Pricing', pricing_path %>
+    </div>
+    <div>
+      <%= link_to '📜 Terms', terms_path %>
+    </div>
+    <div>
+      <%= link_to '📃 Privacy', privacy_path %>
+    </div>
+    <div>
+      <%= link_to '🧑‍💻 Open source on Github', 'https://github.com/yshmarov/insta2blog.com' %>
+    </div>
+    <div>
+      <%= link_to '📈 Open Analytics', 'https://github.com/yshmarov/insta2blog.com' %>
+    </div>
+    <div>
+      Yaroslav Shmarov
+      <%# Instagram %>
+      <%# Twitter %>
+    </div>
+    <div>
+      <%= Time.zone.now.year %>© 
+      All Rights Reserved
+    </div>
   </div>
 </footer>
