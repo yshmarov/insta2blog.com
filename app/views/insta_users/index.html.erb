@@ -1,4 +1,4 @@
-<div class='flex flex-col space-y-4 items-center'>
+<section class='flex flex-col space-y-4 items-center'>
   <h2>
     👀 <%= @insta_users.length %> people have successfully converted their instas' to blogs
   </h2>
@@ -6,4 +6,4 @@
   <% @insta_users.each do |insta_user| %>
     <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
   <% end %>
-</div>
+</section>
