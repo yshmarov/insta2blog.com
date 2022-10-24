@@ -27,3 +27,8 @@
   color: white;
   background: red;
 }
+
+table, th, td {
+  border: 1px solid;
+  padding: 4px;
+}

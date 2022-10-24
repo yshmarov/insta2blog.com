@@ -23,10 +23,11 @@
         <%= render 'shared/flash' %>
       </div>
     </header>
-    <main class='p-4 break-normal'>
+    <main class='flex justify-center p-4'>
+      <div class='max-w-3xl'>
       <%= yield %>
+      </div>
     </main>
   </body>
-  <%# unless infinite scroll page %>
   <%= render 'shared/footer' %>
 </html>

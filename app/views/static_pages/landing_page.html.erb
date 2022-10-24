@@ -1,11 +1,75 @@
-<div class='flex flex-col space-y-8 items-center'>
-  <h1 class="font-bold text-4xl">One click blog from your Instagram.</h1>
+<div class='flex flex-col space-y-24'>
+  <section class='space-y-8 text-center'>
+    <h1 class="font-bold text-4xl">🪄 One click blog from your Instagram.</h1>
 
-  <% unless current_user %>
-    <%= link_to '🎯 Connect your Instagram', instagram_authorize_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
-  <% end %>
+    <div>
+      <% unless current_user %>
+        <%= link_to '🎯 Connect your Instagram', instagram_authorize_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
+      <% end %>
+    </div>
 
-  <div>
-    <%= link_to '👀 See examples', insta_users_path, class: 'bg-slate-700 hover:bg-slate-900 text-fuchsia-50 p-4 rounded-md' %>
-  </div>
+    <div>
+      <%= link_to '👀 See examples', insta_users_path, class: 'bg-slate-700 hover:bg-slate-900 text-fuchsia-50 p-4 rounded-md' %>
+    </div>
+  </section>
+
+  <section class='space-y-4'>
+    <h2 class='font-bold text-3xl text-center'>🧐 How it works</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+      <div>
+        <div class='text-4xl'>1. 🔑</div>
+        <div>Connect your Instagram account to Insta2Blog</div>
+      </div>
+      <div>
+        <div class='text-4xl'>2. ✍️</div>
+        <div>Post on Instagram, as usual</div>
+      </div>
+      <div>
+        <div class='text-4xl'>3. 🧘‍♀️</div>
+        <div>Relax</div>
+      </div>
+    </div> 
+
+    <div>
+      Every time you post on Instagram, we will 🪄🦄 automagically create a blog post on your insta2blog website.
+    </div>
+
+    <div>
+      For example, if your account on instagram is <b><%= @random_user.username %></b>, your blog posts will be at <b><%= link_to insta_user_posts_url(@random_user), @random_user, target: '_blank', rel: 'noopener' %></b>.
+    </div>
+  </section>
+
+  <section class='space-y-4'>
+    <h2 class='font-bold text-3xl text-center'>⁉️ What for?</h2>
+    <div>
+      <div>
+        🧘‍♀️ Run a blog without the tension of maintaining a blog.
+      </div>
+
+      <div>
+        🥇 Boost your SEO ranking. Instagram posts do not rank in Google. Yours will
+      </div>
+
+      <div>
+        🧐 Own the experience on your blog. Don't compete for attention with other creators on Instagram.
+      </div>
+
+      <div>
+        🔍 Quick search for posts on your profile.
+      </div>
+
+      <div>
+        #️⃣ Hashtag search only for YOUR content. Don't redirect traffic out of your blog!
+      </div>
+
+      <div>
+        🔗 Anybody can link to your content. Avoid the instagram registration wall.
+      </div>
+
+      <div>
+        ♻️ Make your content "evergreen". Give a second life to old posts by making them more accessible. 
+      </div>
+    </div>
+  </section>
+  <%# <h2 class='font-bold text-3xl text-center'>📧 Get notified about the launch 🚀</h2> %>
 </div>

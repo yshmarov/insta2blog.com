@@ -1,18 +1,32 @@
-<footer class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6 w-full mt-auto'>
-  <div class='flex items-center font-bold'>
-    <%= image_tag 'itos-logo.png', class: 'w-10' %>
-    <%= link_to Rails.application.class.module_parent.name, root_path %>
+<footer class='bg-slate-50 border-t border-slate-300 p-4 w-full mt-auto text-center'>
+  <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
+    <div class='flex items-center font-bold text-center justify-center'>
+      <%= image_tag 'itos-logo.png', class: 'w-10' %>
+      <%= link_to Rails.application.class.module_parent.name, root_path %>
+    </div>
+    <div>
+      <%= link_to '🤑 Pricing', pricing_path %>
+    </div>
+    <div>
+      <%= link_to '📜 Terms', terms_path %>
+    </div>
+    <div>
+      <%= link_to '📃 Privacy', privacy_path %>
+    </div>
+    <div>
+      <%= link_to '🧑‍💻 Open source on Github', 'https://github.com/yshmarov/insta2blog.com' %>
+    </div>
+    <div>
+      <%= link_to '📈 Open Analytics', 'https://github.com/yshmarov/insta2blog.com' %>
+    </div>
+    <div>
+      Yaroslav Shmarov
+      <%# Instagram %>
+      <%# Twitter %>
+    </div>
+    <div>
+      <%= Time.zone.now.year %>© 
+      All Rights Reserved
+    </div>
   </div>
-  <%= link_to pricing_path, class: 'flex space-x-2' do %>
-    <span>🤑</span>
-    <span class='hidden lg:block'>Pricing</span>
-  <% end %>
-  <%= link_to terms_path, class: 'flex space-x-2' do %>
-    <span>📜</span>
-    <span class='hidden lg:block'>Terms</span>
-  <% end %>
-  <%= link_to privacy_path, class: 'flex space-x-2' do %>
-    <span>📃</span>
-    <span class='hidden lg:block'>Privacy</span>
-  <% end %>
 </footer>
