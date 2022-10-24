@@ -24,6 +24,14 @@ class InstagramController < ApplicationController
     redirect_to insta_user_path(insta_user_id)
   end
 
+  def delete
+    render plain: 'Please contact yashm@outlook.com to delete your data'
+  end
+
+  def deauthorize
+    render plain: 'Please contact yashm@outlook.com to deauthorize the app'
+  end
+
   private
 
   def redirect_uri

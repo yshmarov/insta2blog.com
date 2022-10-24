@@ -2,7 +2,7 @@ class InstaUsersController < ApplicationController
   before_action :set_user, only: %i[show]
 
   def index
-    @insta_users = InstaUser.all.order(created_at: :desc)
+    @insta_users = InstaUser.all.order(insta_posts_count: :desc)
     set_meta_tags title: 'Blogs',
                   description: 'all instagram pages converted into blogs'
   end
