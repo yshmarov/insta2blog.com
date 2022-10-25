@@ -1,15 +1,13 @@
-<div class='flex flex-col space-y-24'>
+<div class='flex flex-col space-y-16'>
   <section class='space-y-8 text-center'>
     <h1 class="font-bold text-4xl">🪄 One click blog from your Instagram.</h1>
 
     <div>
-      <% unless current_user %>
+      <% if current_user %>
+        <%= render partial: 'insta_users/insta_user', locals: { insta_user: current_user } %>
+      <% else %>
         <%= link_to '🎯 Connect your Instagram', instagram_authorize_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
       <% end %>
-    </div>
-
-    <div>
-      <%= link_to '👀 See examples', insta_users_path, class: 'bg-slate-700 hover:bg-slate-900 text-fuchsia-50 p-4 rounded-md' %>
     </div>
   </section>
 
@@ -37,11 +35,15 @@
     <div>
       For example, if your account on instagram is <b><%= @random_user.username %></b>, your blog posts will be at <b><%= link_to insta_user_posts_url(@random_user), insta_user_posts_url(@random_user) %></b>.
     </div>
+
+    <div class='text-center'>
+      <%= link_to '👀 See examples', insta_users_path, class: 'bg-blue-600 hover:bg-blue-800 text-fuchsia-50 p-4 rounded-md font-bold' %>
+    </div>
   </section>
 
   <section class='space-y-4'>
     <h2 class='font-bold text-3xl text-center'>⁉️ What for?</h2>
-    <div>
+    <div class='space-y-4'>
       <div>
         🧘‍♀️ Run a blog without the tension of maintaining a blog.
       </div>
