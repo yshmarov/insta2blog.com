@@ -1,6 +1,7 @@
 <div class='flex flex-col space-y-4 items-center'>
   <div>
     <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
+    <%#= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
 
   <%= form_with url: insta_user_posts_path(@insta_user),
@@ -19,11 +20,13 @@
 
   <% if cookies[:view].eql?('grid') %>
     <%= link_to insta_user_posts_path(@insta_user, view: :list) do %>
-      List
+      <div>🌇</div>
+      <div>🌇</div>
+      <div>🌇</div>
     <% end %>
-  <% elsif cookies[:view].eql?('list') %>
+  <% else %>
     <%= link_to insta_user_posts_path(@insta_user, view: :grid) do %>
-      Grid
+      <div>🌇🌇🌇</div>
     <% end %>
   <% end %>
 
@@ -32,7 +35,7 @@
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
     <% if cookies[:view].eql?('grid') %>
       <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
-    <% elsif cookies[:view].eql?('list') %>
+    <% else %>
       <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
     <% end %>
   <% end %>
