@@ -1,5 +1,5 @@
 <article class='bg-slate-50 border border-slate-300 max-w-md p-4 rounded-md hover:bg-slate-100'>
-  <%= @insta_user.at_username %>
+  <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   <div>
     <% if post.image? || post.carousel_album? %>
       <%= image_tag post.media_url %>
@@ -7,13 +7,13 @@
       <%= video_tag post.media_url, poster: post.thumbnail_url, controls: true %>
     <% end %>
   </div>
-  <div>
-    <p class='break-normal'>
-      <%= highlight(with_hashtags(post), params[:caption]) %>
-    </p>
+  <div class='border-b border-y-slate-300'>
     <p>
       🕚 <%= post.timestamp.to_fs(:long) %>
     </p>
+    <%= highlight(with_hashtags(post), params[:caption]) %>
+  </div>
+  <div>
     <p>
     <%= link_to insta_user_post_path(post.insta_user, post) do %>
       🔍 view
