@@ -18,17 +18,18 @@
                         data: { action: 'input->debounce#search' } %>
   <% end %>
 
-  <% if cookies[:view].eql?('grid') %>
-    <%= link_to insta_user_posts_path(@insta_user, view: :list) do %>
+  <div class='flex items-center space-x-4'>
+    <% grid_class = 'bg-slate-400 p-2 rounded-sm' unless cookies[:view].eql?('grid') %>
+    <%= link_to insta_user_posts_path(@insta_user, view: :list), class: grid_class do %>
       <div>🌇</div>
       <div>🌇</div>
       <div>🌇</div>
     <% end %>
-  <% else %>
-    <%= link_to insta_user_posts_path(@insta_user, view: :grid) do %>
+    <% list_class = 'bg-slate-400 p-2 rounded-sm' if cookies[:view].eql?('grid') %>
+    <%= link_to insta_user_posts_path(@insta_user, view: :grid), class: list_class do %>
       <div>🌇🌇🌇</div>
     <% end %>
-  <% end %>
+  </div>
 
   <%= turbo_frame_tag 'results', target: '_top', data: { turbo_action: 'advance' } do %>
     <%#= request.url %>
