@@ -2,6 +2,8 @@ class InstaPostsController < ApplicationController
   before_action :set_user
 
   def index
+    cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
+
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     @posts = if params[:caption].present?
                posts.where('caption ilike ?', "%#{params[:caption]}%")

@@ -1,0 +1,5 @@
+<div class='grid grid-cols-3 gap-0 items-center'>
+  <% posts.each do |post| %>
+    <%= render partial: 'insta_posts/grid_item', locals: { post: } %>
+  <% end %>
+</div>

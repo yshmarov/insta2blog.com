@@ -35,7 +35,7 @@
     </div>
 
     <div>
-      For example, if your account on instagram is <b><%= @random_user.username %></b>, your blog posts will be at <b><%= link_to insta_user_posts_url(@random_user), @random_user, target: '_blank', rel: 'noopener' %></b>.
+      For example, if your account on instagram is <b><%= @random_user.username %></b>, your blog posts will be at <b><%= link_to insta_user_posts_url(@random_user), insta_user_posts_url(@random_user) %></b>.
     </div>
   </section>
 
