@@ -21,10 +21,7 @@
     <%#= request.url %>
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
 
-    <div class='flex flex-col space-y-4 items-center'>
-      <% @posts.each do |post| %>
-        <%= render partial: 'insta_posts/insta_post', locals: { post: } %>
-      <% end %>
-    </div>
+    <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
+    <%#= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
   <% end %>
 </div>
