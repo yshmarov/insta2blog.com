@@ -117,6 +117,7 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
+    honeybadger (4.12.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -279,6 +280,7 @@ DEPENDENCIES
   erb_lint
   faraday (~> 2.6)
   friendly_id (~> 5.4)
+  honeybadger (~> 4.0)
   importmap-rails
   jbuilder
   meta-tags (~> 2.18)
