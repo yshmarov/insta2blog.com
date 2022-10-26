@@ -19,6 +19,9 @@ development_environments:
 # You can override this by explicitly setting report_data to true or false.
 # report_data: true
 
+# development:
+#   report_data: true
+
 # The current Git revision of your project. Defaults to the last commit hash.
 # revision: null
 

@@ -83,4 +83,4 @@ gem 'friendly_id', '~> 5.4'
 gem 'data_migrate', '~> 8.1'
 
 gem 'meta-tags', '~> 2.18'
-gem "honeybadger", "~> 4.0"
+gem 'honeybadger', '~> 4.0'
