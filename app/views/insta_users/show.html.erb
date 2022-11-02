@@ -38,9 +38,17 @@
       </div>
     <% end %>
 
-    <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-      <span>▶️ Import posts</span>
-    <% end %>
+    <div class='text-center'>
+      <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+        <span>▶️ Import posts</span>
+      <% end %>
+      <% if @insta_user.last_import_at.present? %>
+        <span class='text-xs text-slate-500'>
+          Last import:
+          <%= @insta_user.last_import_at.to_fs(:long) %>
+        </span>
+      <% end %>
+    </div>
 
     <div class='text-center'>
       Unsatisfied?
