@@ -10,6 +10,7 @@ class InstaMediaService
 
   def call
     ask_media
+    insta_user.update(last_import_at: Time.zone.now)
   end
 
   private
