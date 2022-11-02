@@ -45,7 +45,7 @@
       <% if @insta_user.last_import_at.present? %>
         <span class='text-xs text-slate-500'>
           Last import:
-          <%= @insta_user.last_import_at.to_s(:long) %>
+          <%= @insta_user.last_import_at.to_fs(:long) %>
         </span>
       <% end %>
     </div>
