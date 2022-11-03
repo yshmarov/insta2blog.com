@@ -1,9 +1,5 @@
 <%= link_to insta_user_post_path(post.insta_user, post) do %>
   <article class='border border-slate-300 hover:border-slate-900'>
-    <% if post.image? || post.carousel_album? %>
-      <%= image_tag post.media_url %>
-    <% elsif post.video? %>
-      <%= image_tag post.thumbnail_url %>
-    <% end %>
+    <%= image_tag post.bg_image_url %>
   </article>
 <% end %>

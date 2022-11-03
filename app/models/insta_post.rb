@@ -5,4 +5,10 @@ class InstaPost < ApplicationRecord
 
   extend FriendlyId
   friendly_id :remote_id, use: %i[finders]
+
+  def bg_image_url
+    return thumbnail_url if video?
+
+    media_url
+  end
 end
