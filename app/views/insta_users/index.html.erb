@@ -1,6 +1,8 @@
 <section class='flex flex-col space-y-4 items-center'>
   <h2>
-    👀 <%= @insta_users.length %> people have successfully converted their instas' to blogs
+    🦄
+    <%= pluralize(@insta_users.length, 'person') %>
+    people have successfully converted their instas' to blogs
   </h2>
 
   <% @insta_users.each do |insta_user| %>

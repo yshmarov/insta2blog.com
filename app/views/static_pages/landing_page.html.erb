@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-16'>
-  <section class='space-y-8 text-center'>
-    <h1 class="font-bold text-4xl">🪄 One click blog from your Instagram.</h1>
+  <section class='space-y-16 text-center'>
+    <h1 class="font-semibold text-4xl">🪄 One click blog from your Instagram.</h1>
 
     <div>
       <% if current_user %>
@@ -11,29 +11,29 @@
     </div>
   </section>
 
-  <section class='space-y-4'>
-    <h2 class='font-bold text-3xl text-center'>🧐 How it works</h2>
+  <section class='space-y-8'>
+    <h2 class='font-semibold text-3xl text-center'>🧐 How it works</h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-      <div>
+      <div class='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg p-4 text-white'>
         <div class='text-4xl'>1. 🔑</div>
         <div>Connect your Instagram account to Insta2Blog</div>
       </div>
-      <div>
+      <div class='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg p-4 text-white'>
         <div class='text-4xl'>2. ✍️</div>
         <div>Post on Instagram, as usual</div>
       </div>
-      <div>
+      <div class='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg p-4 text-white'>
         <div class='text-4xl'>3. 🧘‍♀️</div>
         <div>Relax</div>
       </div>
     </div> 
 
-    <div>
+    <div class='text-gray-700 text-xl'>
       Every time you post on Instagram, we will 🪄🦄 automagically create a blog post on your insta2blog website.
     </div>
 
     <% if @random_user.present? %>
-      <div>
+      <div class='text-gray-700 text-xl'>
         For example, if your account on instagram is <b><%= @random_user.username %></b>, your blog posts will be at <b><%= link_to insta_user_posts_url(@random_user), insta_user_posts_url(@random_user) %></b>.
       </div>
     <% end %>
@@ -44,8 +44,8 @@
   </section>
 
   <section class='space-y-4'>
-    <h2 class='font-bold text-3xl text-center'>⁉️ What for?</h2>
-    <div class='space-y-4'>
+    <h2 class='font-semibold text-3xl text-center'>⁉️ What for?</h2>
+    <div class='space-y-4 text-lg'>
       <div>
         🧘‍♀️ Run a blog without the tension of maintaining a blog.
       </div>
