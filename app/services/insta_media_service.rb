@@ -53,6 +53,7 @@ class InstaMediaService
         timestamp: item['timestamp'],
         insta_user:
       )
+      ProcessCaptionService.new(insta_post).call
     end
   end
 
