@@ -2,7 +2,6 @@
 # result = ProcessCaptionService.new(post).call
 class ProcessCaptionService
   delegate :link_to, to: 'ActionController::Base.helpers'
-  # delegate :insta_user_posts_path, to: 'Rails.application.routes.url_helpers'
 
   include Rails.application.routes.url_helpers
 
