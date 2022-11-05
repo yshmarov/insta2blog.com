@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_173539) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_150806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_173539) do
     t.bigint "insta_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "processed_caption"
     t.index ["insta_user_id"], name: "index_insta_posts_on_insta_user_id"
     t.index ["remote_id"], name: "index_insta_posts_on_remote_id", unique: true
   end
