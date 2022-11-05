@@ -11,11 +11,13 @@ class ProcessCaptionServiceTest < ActiveSupport::TestCase
   end
 
   test 'should turn the hashtag to a url' do
+    ProcessCaptionService.new(@post).call
     text = 'Post with a <a data-turbo="false" class="hashtag font-semibold" href="/u/za-yuliia/p?caption=%23hashtag&amp;onlypath=true">#hashtag</a>'
     assert_equal text, @post.processed_caption
   end
 
   test 'should turn all mentions to urls' do
+    ProcessCaptionService.new(@post2).call
     text = 'a <a data-turbo="false" class="mention font-semibold" href="/u/za-yuliia/p?caption=%40mention&amp;onlypath=true">@mention</a> and <a data-turbo="false" class="mention font-semibold" href="/u/za-yuliia/p?caption=%40yarotheslav&amp;onlypath=true">@yarotheslav</a>'
     assert_equal text, @post2.processed_caption
   end
