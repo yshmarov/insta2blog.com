@@ -1,13 +1,15 @@
 module InstaPostsHelper
   def with_regex(post)
     regex = /#\w+/
-    css_class = 'hashtag'
+    css_class = 'hashtag font-semibold'
     regex_to_link(post, regex, css_class)
 
     regex = /@\w+/
-    css_class = 'mention'
+    css_class = 'mention font-semibold'
     regex_to_link(post, regex, css_class)
   end
+
+  private
 
   def regex_to_link(post, regex, css_class)
     return nil if post.caption.blank?
