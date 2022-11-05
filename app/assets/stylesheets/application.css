@@ -36,3 +36,11 @@ table, th, td {
 .hashtag {
   color: blue
 }
+
+.mention {
+  color: teal
+}
+
+mark {
+  background-color: hotpink
+}
