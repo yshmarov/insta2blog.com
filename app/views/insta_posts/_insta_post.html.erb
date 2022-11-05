@@ -13,7 +13,7 @@
     <p>
       🕚 <%= post.timestamp.to_fs(:long) %>
     </p>
-    <%= highlight(simple_format(with_regex(post)), params[:caption]) %>
+    <%= highlight(simple_format(post.processed_caption), params[:caption]) %>
   </div>
   <div class='px-4 pt-4'>
     <p>

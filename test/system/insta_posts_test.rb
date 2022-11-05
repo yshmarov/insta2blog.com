@@ -5,6 +5,7 @@ class InstaPostsTest < ApplicationSystemTestCase
     @user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
     @post = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
                              caption: 'Post with a #hashtag and a second #hash')
+    ProcessCaptionService.new(@post).call
   end
 
   test 'insta_posts#show' do
