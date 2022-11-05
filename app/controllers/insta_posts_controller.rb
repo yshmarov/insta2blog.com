@@ -20,7 +20,7 @@ class InstaPostsController < ApplicationController
 
   def show
     @post = @insta_user.insta_posts.find(params[:post_id])
-    @posts = @insta_user.insta_posts.without(@post).limit(6)
+    @posts = @insta_user.insta_posts.without(@post).order('RANDOM()').limit(6)
   end
 
   private
