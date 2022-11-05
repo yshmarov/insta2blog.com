@@ -1,7 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
   <div>
     <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
-    <%#= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
 
   <%= form_with url: insta_user_posts_path(@insta_user),
@@ -19,15 +18,13 @@
   <% end %>
 
   <div class='flex items-center space-x-4'>
-    <% grid_class = 'bg-slate-400 p-2 rounded-sm' unless cookies[:view].eql?('grid') %>
+    <% grid_class = 'bg-slate-300 p-2 rounded-sm' unless cookies[:view].eql?('grid') %>
     <%= link_to insta_user_posts_path(@insta_user, view: :list), class: grid_class do %>
-      <div>🌇</div>
-      <div>🌇</div>
-      <div>🌇</div>
+      <i class="fa-solid fa-bars text-slate-800"></i>
     <% end %>
-    <% list_class = 'bg-slate-400 p-2 rounded-sm' if cookies[:view].eql?('grid') %>
+    <% list_class = 'bg-slate-300 p-2 rounded-sm' if cookies[:view].eql?('grid') %>
     <%= link_to insta_user_posts_path(@insta_user, view: :grid), class: list_class do %>
-      <div>🌇🌇🌇</div>
+      <i class="fa-solid fa-table-cells text-slate-800"></i>
     <% end %>
   </div>
 
