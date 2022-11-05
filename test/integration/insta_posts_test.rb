@@ -25,6 +25,12 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     @post = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now)
     get insta_user_post_url(@user, @post)
     assert_response :success
+    assert_no_match 'More posts from', @response.body
+
+    InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now, media_url: 'itos-logo.png')
+    get insta_user_post_url(@user, @post)
+    assert_response :success
+    assert_match 'More posts from', @response.body
   end
 
   test 'import' do
