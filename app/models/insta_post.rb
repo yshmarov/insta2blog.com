@@ -6,10 +6,6 @@ class InstaPost < ApplicationRecord
   extend FriendlyId
   friendly_id :remote_id, use: %i[finders]
 
-  # after_create do
-  #   ProcessCaptionService.new(self).call
-  # end
-
   def bg_image_url
     return thumbnail_url if video?
 
