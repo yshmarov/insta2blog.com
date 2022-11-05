@@ -16,6 +16,7 @@ class ProcessCaptionService
     return if post.caption.blank?
 
     processed_caption = with_regex(post.caption)
+    post.reload
     post.update!(processed_caption:)
   end
 
