@@ -5,3 +5,14 @@
 
   <%= render partial: 'insta_posts/insta_post', locals: { post: @post } %>
 </div>
+
+<% if @posts.any? %>
+  <hr class='my-12'>
+
+  <div>
+    More posts from
+    <%= @insta_user.at_username %>
+  </div>
+
+  <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
+<% end %>
