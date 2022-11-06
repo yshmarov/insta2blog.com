@@ -10,27 +10,26 @@
     <% end %>
   </div>
   <div class='p-4 border-b border-y-slate-300'>
-    <p>
-      🕚 <%= post.timestamp.to_fs(:long) %>
+    <p class='text-gray-700 font-light'>
+      <i class="fa-regular fa-clock"></i>
+      <%= post.timestamp.to_fs(:long) %>
     </p>
     <%= highlight(simple_format(post.processed_caption), params[:caption]) %>
   </div>
-  <div class='px-4 pt-4'>
-    <p>
-    <%= link_to insta_user_post_path(post.insta_user, post) do %>
-      🔍 view
+  <div class='px-4 pt-4 flex justify-between text-2xl text-gray-700'>
+    <%= link_to insta_user_post_path(post.insta_user, post), class: 'hover:text-pink-600' do %>
+      <i class="fa-regular fa-eye"></i>
     <% end %>
-    </p>
-    <p>
-    <%= link_to post.permalink, target: '_blank', rel: 'noopener' do %>
-      🔗 view on Instagram
+    <%= link_to post.permalink, target: '_blank', rel: 'noopener', class: 'hover:text-pink-600' do %>
+      <i class="fa-brands fa-instagram"></i>
     <% end %>
-    </p>
-    <div data-controller="clipboard">
+    <div data-controller="clipboard" data-clipboard-clicked-value="<i class='fa-regular fa-circle-check text-green-600'></i>">
       <input data-clipboard-target="source"
             class="font-extralight text-xs h-6 rounded-md"
-            type="text" value="<%= insta_user_post_url(post.insta_user, post) %>" readonly>
-      <button data-clipboard-target="trigger" data-action="clipboard#copy">Copy</button>
+            type="text" value="<%= insta_user_post_url(post.insta_user, post) %>" readonly hidden>
+      <button data-clipboard-target="trigger" data-action="clipboard#copy">
+        <i class="fa-regular fa-copy hover:text-pink-600"></i>
+      </button>
     </div>
   </div>
 </article>
