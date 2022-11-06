@@ -23,11 +23,11 @@
     <%= link_to post.permalink, target: '_blank', rel: 'noopener', class: 'hover:text-pink-600' do %>
       <i class="fa-brands fa-instagram"></i>
     <% end %>
-    <div data-controller="clipboard">
+    <div data-controller="clipboard" data-clipboard-clicked-value="<i class='fa-regular fa-circle-check text-green-600'></i>">
       <input data-clipboard-target="source"
             class="font-extralight text-xs h-6 rounded-md"
             type="text" value="<%= insta_user_post_url(post.insta_user, post) %>" readonly hidden>
-      <button data-clipboard-target="trigger" data-action="clipboard#copy" class=''>
+      <button data-clipboard-target="trigger" data-action="clipboard#copy">
         <i class="fa-regular fa-copy hover:text-pink-600"></i>
       </button>
     </div>
