@@ -1,19 +1,19 @@
 <nav class='bg-slate-50 border border-slate-300 h-16 flex items-center justify-between px-6'>
   <div class='flex items-center font-bold'>
-    <%= image_tag 'itos-logo.png', class: 'w-10' %>
+    <%= image_tag 'itos-logo.png', class: 'w-10', alt: 'insta2blog logo' %>
     <%= link_to Rails.application.class.module_parent.name, root_path %>
   </div>
+  <%= link_to insta_users_path, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100' do %>
+    <i class="fa-regular fa-compass text-slate-700"></i>
+    <span class='hidden lg:block'>Explore</span>
+  <% end %>
   <% if current_user %>
-    <%= link_to insta_users_path, class: 'flex space-x-2' do %>
-      <span>👀</span>
-      <span class='hidden lg:block'>browse</span>
-    <% end %>
-    <%= link_to insta_user_path(current_user), class: 'flex space-x-2' do %>
-      <span>☺️</span>
+    <%= link_to insta_user_path(current_user), class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100' do %>
+      <i class="fa-solid fa-house text-slate-700"></i>
       <span class='hidden lg:block'><%= current_user.at_username %></span>
     <% end %>
-    <%= button_to logout_path, method: :delete, class: 'flex space-x-2', form: { data: { turbo_confirm: 'Log out?' } } do %>
-      <span>👋</span>
+    <%= button_to logout_path, method: :delete, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100', form: { data: { turbo_confirm: 'Log out?' } } do %>
+      <i class="fa-solid fa-arrow-right-from-bracket text-slate-700"></i>
       <span class='hidden lg:block'>Logout</span>
     <% end %>
   <% else %>

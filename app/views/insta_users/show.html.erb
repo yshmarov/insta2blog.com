@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
-  <div>
-    <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
+  <div class='text-sm text-gray-700 font-semibold'>
+    <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
 
   <% unless @insta_user.insta_posts_count.zero? %>
@@ -38,8 +38,26 @@
       </div>
     <% end %>
 
-    <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
-      <span>▶️ Import posts</span>
-    <% end %>
+    <div class='text-center'>
+      <%= button_to import_insta_user_posts_path(@insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 hover:bg-slate-100' do %>
+        <span>▶️ Import posts</span>
+      <% end %>
+      <% if @insta_user.last_import_at.present? %>
+        <span class='text-xs text-slate-500'>
+          Last import:
+          <%= @insta_user.last_import_at.to_fs(:long) %>
+        </span>
+      <% end %>
+    </div>
+
+    <div class='text-center'>
+      Unsatisfied?
+      <p>
+      <%= link_to 'Disconnect instagram', '/instagram/deauthorize', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
+      </p>
+      <p>
+      <%= link_to 'Delete all my data', '/instagram/delete', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
+      </p>
+    </div>
   <% end %>
 </div>

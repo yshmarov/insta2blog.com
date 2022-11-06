@@ -1,0 +1,5 @@
+<div class='flex flex-col space-y-4 items-center'>
+  <% posts.each do |post| %>
+    <%= render partial: 'insta_posts/insta_post', locals: { post: } %>
+  <% end %>
+</div>

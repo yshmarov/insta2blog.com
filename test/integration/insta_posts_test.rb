@@ -8,11 +8,14 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
   end
 
   test 'index' do
-    InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
-                     caption: 'Post by this user')
+    post1 = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
+                             caption: 'Post by this user')
     user2 = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
-    InstaPost.create(insta_user: user2, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
-                     caption: 'Post by other user')
+    post2 = InstaPost.create(insta_user: user2, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
+                             caption: 'Post by other user')
+    ProcessCaptionService.new(post1).call
+    ProcessCaptionService.new(post2).call
+
     get insta_user_posts_url(@user)
 
     assert_response :success
@@ -22,9 +25,23 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
   end
 
   test 'show' do
-    @post = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now)
+    @post = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now, caption: 'some text')
     get insta_user_post_url(@user, @post)
     assert_response :success
+    assert_no_match 'More posts from', @response.body
+    assert_no_match 'some text', response.body
+
+    # when user has other posts, displays "more posts from"
+    InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now, media_url: 'itos-logo.png')
+    get insta_user_post_url(@user, @post)
+    assert_response :success
+    assert_match 'More posts from', @response.body
+
+    # displays body if ProcessCaptionService was run
+    ProcessCaptionService.new(@post).call
+    get insta_user_post_url(@user, @post)
+    assert_response :success
+    assert_match 'some text', response.body
   end
 
   test 'import' do

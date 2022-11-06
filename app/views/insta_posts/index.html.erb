@@ -1,6 +1,6 @@
 <div class='flex flex-col space-y-4 items-center'>
-  <div>
-    <%= link_to_unless_current @insta_user.at_username, insta_user_path(@insta_user) %>
+  <div class='text-sm text-gray-700 font-semibold'>
+    <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
 
   <%= form_with url: insta_user_posts_path(@insta_user),
@@ -17,14 +17,24 @@
                         data: { action: 'input->debounce#search' } %>
   <% end %>
 
+  <div class='flex items-center space-x-4'>
+    <% grid_class = 'bg-slate-300 p-2 rounded-sm' unless cookies[:view].eql?('grid') %>
+    <%= link_to insta_user_posts_path(@insta_user, view: :list), class: grid_class do %>
+      <i class="fa-solid fa-bars text-slate-800"></i>
+    <% end %>
+    <% list_class = 'bg-slate-300 p-2 rounded-sm' if cookies[:view].eql?('grid') %>
+    <%= link_to insta_user_posts_path(@insta_user, view: :grid), class: list_class do %>
+      <i class="fa-solid fa-table-cells text-slate-800"></i>
+    <% end %>
+  </div>
+
   <%= turbo_frame_tag 'results', target: '_top', data: { turbo_action: 'advance' } do %>
     <%#= request.url %>
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
-
-    <div class='flex flex-col space-y-4 items-center'>
-      <% @posts.each do |post| %>
-        <%= render partial: 'insta_posts/insta_post', locals: { post: } %>
-      <% end %>
-    </div>
+    <% if cookies[:view].eql?('grid') %>
+      <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
+    <% else %>
+      <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
+    <% end %>
   <% end %>
 </div>

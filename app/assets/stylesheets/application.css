@@ -32,3 +32,15 @@ table, th, td {
   border: 1px solid;
   padding: 4px;
 }
+
+.hashtag {
+  color: blue
+}
+
+.mention {
+  color: teal
+}
+
+mark {
+  background-color: hotpink
+}

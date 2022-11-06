@@ -1,0 +1,10 @@
+<%= link_to insta_user_post_path(post.insta_user, post) do %>
+  <article class='border border-slate-300 hover:border-slate-400 grayscale-0 hover:grayscale relative'>
+    <% if post.video? %>
+    <div class='absolute right-2 top-1 text-white'>
+      <i class="fa-solid fa-video"></i>
+    </div>
+    <% end %>
+    <%= image_tag post.bg_image_url, alt: "Post by #{post.insta_user.username} on #{post.timestamp}", class: 'md:h-64 h-48 w-full object-cover' %>
+  </article>
+<% end %>

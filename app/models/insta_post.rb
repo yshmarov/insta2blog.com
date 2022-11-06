@@ -6,6 +6,12 @@ class InstaPost < ApplicationRecord
   extend FriendlyId
   friendly_id :remote_id, use: %i[finders]
 
+  def bg_image_url
+    return thumbnail_url if video?
+
+    media_url
+  end
+
   def meta_title
     # first sentence OR text before first line break
     word_count = 10
@@ -24,9 +30,6 @@ class InstaPost < ApplicationRecord
   end
 
   def meta_image
-    return thumbnail_url if video?
-
-    media_url
   end
 
   def meta_article
