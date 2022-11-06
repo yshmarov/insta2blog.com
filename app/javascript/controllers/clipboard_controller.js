@@ -10,7 +10,7 @@ export default class extends Controller {
     this.sourceTarget.focus()
     var triggerElement = this.triggerTarget
     var initialHTML = triggerElement.innerHTML
-    triggerElement.innerHTML = "<span style='color:grey;'>Copied</span>"
+    triggerElement.innerHTML = "<span style='color:green;'>Copied</span>"
     setTimeout(() => {
       triggerElement.innerHTML = initialHTML
       this.sourceTarget.blur()
