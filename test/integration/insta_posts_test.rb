@@ -48,7 +48,7 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     stub_request(:get, 'https://graph.instagram.com/me/media?access_token&fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username')
       .to_return(status: 200, body: response_body.to_json, headers: {})
 
-    post import_insta_user_posts_path(@user)
+    post import_insta_user_path(@user)
     assert_response :redirect
 
     assert_redirected_to insta_user_posts_path(InstaUser.last)

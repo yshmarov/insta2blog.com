@@ -6,10 +6,10 @@
 </div>
 
 <% if @insta_users.any? %>
-  <div>
-    <div>
+  <div class='space-y-2'>
+    <h4 class='font-semibold text-lg'>
       Connected Instagram accounts:
-    </div>
+    </h4>
 
     <% @insta_users.each do |insta_user| %>
       <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>

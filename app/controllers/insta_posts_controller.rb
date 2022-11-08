@@ -1,7 +1,7 @@
 class InstaPostsController < ApplicationController
   before_action :set_user
-  before_action :require_user!, only: :import
 
+  # all posts
   def index
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
 
@@ -13,14 +13,7 @@ class InstaPostsController < ApplicationController
              end
   end
 
-  def import
-    return unless @insta_user.user == current_user
-
-    # TODO: should (also) trigger by a job
-    InstaMediaService.new(@insta_user).call
-    redirect_to insta_user_posts_path(@insta_user), notice: t('.success')
-  end
-
+  # single post
   def show
     @post = @insta_user.insta_posts.find(params[:post_id])
     @posts = @insta_user.insta_posts.without(@post).order('RANDOM()').limit(6)
