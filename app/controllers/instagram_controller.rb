@@ -19,9 +19,13 @@ class InstagramController < ApplicationController
     insta_user_id = InstaAuthService.new(code, redirect_uri).call
     return head :bad_request unless insta_user_id
 
+    insta_user = InstaUser.find(insta_user_id)
+    insta_user.update(user: current_user)
+
     redirect_to insta_user_path(insta_user_id)
   end
 
+  # TODO: move to other controller?
   def delete
     render plain: 'Please contact yashm@outlook.com to delete your data'
   end

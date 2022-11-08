@@ -1,5 +1,5 @@
 class InstaUser < ApplicationRecord
-  belongs_to :insta_user
+  belongs_to :user, optional: true
   has_many :insta_posts, dependent: :destroy
   has_many :insta_access_tokens, dependent: :destroy
   validates :username, presence: true, uniqueness: true
