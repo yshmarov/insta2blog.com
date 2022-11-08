@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :insta_users, dependent: :destroy
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   passwordless_with :email

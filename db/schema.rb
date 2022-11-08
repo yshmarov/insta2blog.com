@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_08_125104) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_08_132825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,8 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_125104) do
     t.string "slug"
     t.integer "insta_posts_count", default: 0, null: false
     t.datetime "last_import_at"
+    t.bigint "user_id"
     t.index ["remote_id"], name: "index_insta_users_on_remote_id", unique: true
     t.index ["slug"], name: "index_insta_users_on_slug", unique: true
+    t.index ["user_id"], name: "index_insta_users_on_user_id"
     t.index ["username"], name: "index_insta_users_on_username", unique: true
   end
 
@@ -75,4 +77,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_125104) do
   end
 
   add_foreign_key "insta_posts", "insta_users"
+  add_foreign_key "insta_users", "users"
 end

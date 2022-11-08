@@ -2,3 +2,11 @@
   <i class="fa-brands fa-instagram"></i>
   <span>Connect an Instagram account</span>
 <% end %>
+
+<% if @insta_users.any? %>
+  Connected Instagram accounts:
+
+  <% @insta_users.each do |insta_user| %>
+    <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
+  <% end %>
+<% end %>
