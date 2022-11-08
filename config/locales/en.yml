@@ -37,3 +37,5 @@ en:
   insta_posts:
     import:
       success: Posts have been imported!
+  notifications:
+    unauthorized: 'You are not logged in.'

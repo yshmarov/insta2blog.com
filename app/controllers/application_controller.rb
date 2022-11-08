@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   def require_user!
     return if current_user
 
-    redirect_to root_path, flash: { alert: 'You are not logged in.' }
+    redirect_to root_path, flash: { alert: t('notifications.unauthorized') }
   end
 end
