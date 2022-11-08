@@ -1,5 +1,13 @@
-<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path do |f| %>
-  <% email_field_name = :"passwordless[#{@email_field}]" %>
-  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil) %>
-  <%= f.submit I18n.t('passwordless.sessions.new.submit') %>
+<div class='text-center'>
+  Enter your email to continue.
+</div>
+
+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, class: 'text-center space-y-4' do |f| %>
+  <div>
+    <% email_field_name = :"passwordless[#{@email_field}]" %>
+    <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true %>
+  </div>
+  <div>
+    <%= f.submit I18n.t('passwordless.sessions.new.submit') %>
+  </div>
 <% end %>
