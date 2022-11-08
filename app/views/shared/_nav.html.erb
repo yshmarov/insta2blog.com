@@ -17,7 +17,7 @@
       <span class='hidden lg:block'>Logout</span>
     <% end %>
   <% else %>
-    <%= link_to instagram_authorize_path, class: 'flex space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
+    <%= link_to auth.sign_in_path, class: 'flex space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
       <span>🎯</span>
       <span>START</span>
     <% end %>

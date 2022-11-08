@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
-  passwordless_for :users
+  # passwordless_for :users
+  passwordless_for :users, at: '/', as: :auth
 
   get 'instagram/authorize', to: "instagram#authorize"
   get 'instagram/callback', to: "instagram#callback"
