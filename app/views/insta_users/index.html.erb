@@ -6,6 +6,8 @@
   </h2>
 
   <% @insta_users.each do |insta_user| %>
-    <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
+    <%= link_to insta_user.at_username,
+                insta_user_posts_path(insta_user),
+                class: 'flex rounded-md p-2 space-x-2 bg-slate-50 border border-slate-300 hover:bg-slate-100' %>
   <% end %>
 </section>
