@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
 
-  <% if @insta_user == current_user %>
+  <% if @insta_user.user == current_user %>
     <% if @insta_user.insta_posts_count.zero? %>
       <div class='text-center'>
         <p>
