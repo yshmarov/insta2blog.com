@@ -19,8 +19,6 @@ class InstagramController < ApplicationController
     insta_user_id = InstaAuthService.new(code, redirect_uri).call
     return head :bad_request unless insta_user_id
 
-    session[:insta_user_id] = insta_user_id
-
     redirect_to insta_user_path(insta_user_id)
   end
 
