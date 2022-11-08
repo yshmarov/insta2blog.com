@@ -6,4 +6,8 @@ class User < ApplicationRecord
   def self.fetch_resource_for_passwordless(email)
     find_or_create_by(email:)
   end
+
+  def username
+    email.split('@').first
+  end
 end

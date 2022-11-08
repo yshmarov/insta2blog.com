@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # passwordless_for :users
   passwordless_for :users, at: '/', as: :auth
 
+  get 'me', to: 'users#show', as: :user
+
   get 'instagram/authorize', to: "instagram#authorize"
   get 'instagram/callback', to: "instagram#callback"
   get 'instagram/deauthorize', to: "instagram#deauthorize"
