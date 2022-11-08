@@ -1,12 +1,18 @@
-<%= link_to instagram_authorize_path, class: 'flex items-center space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
-  <i class="fa-brands fa-instagram"></i>
-  <span>Connect an Instagram account</span>
-<% end %>
+<div>
+  <%= link_to instagram_authorize_path, class: 'flex items-center space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
+    <i class="fa-brands fa-instagram"></i>
+    <span>Connect an Instagram account</span>
+  <% end %>
+</div>
 
 <% if @insta_users.any? %>
-  Connected Instagram accounts:
+  <div>
+    <div>
+      Connected Instagram accounts:
+    </div>
 
-  <% @insta_users.each do |insta_user| %>
-    <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
-  <% end %>
+    <% @insta_users.each do |insta_user| %>
+      <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
+    <% end %>
+  </div>
 <% end %>
