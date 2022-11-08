@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_05_150806) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_08_125104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
 
   create_table "insta_access_tokens", force: :cascade do |t|
     t.string "access_token"
@@ -54,6 +51,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_150806) do
     t.index ["remote_id"], name: "index_insta_users_on_remote_id", unique: true
     t.index ["slug"], name: "index_insta_users_on_slug", unique: true
     t.index ["username"], name: "index_insta_users_on_username", unique: true
+  end
+
+  create_table "passwordless_sessions", force: :cascade do |t|
+    t.string "authenticatable_type"
+    t.bigint "authenticatable_id"
+    t.datetime "timeout_at", precision: nil, null: false
+    t.datetime "expires_at", precision: nil, null: false
+    t.datetime "claimed_at", precision: nil
+    t.text "user_agent", null: false
+    t.string "remote_addr", null: false
+    t.string "token", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "insta_posts", "insta_users"
