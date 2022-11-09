@@ -1,5 +1,5 @@
 class InstaUsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show import]
   before_action :require_user!, only: :import
 
   # discovery

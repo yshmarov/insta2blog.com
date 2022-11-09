@@ -34,7 +34,7 @@ en:
   sessions:
     logout:
       success: You have logged out
-  insta_posts:
+  insta_users:
     import:
       success: Posts have been imported!
   notifications:
