@@ -21,24 +21,23 @@ class InstaMediaService
                         request.params = media_params(insta_access_token.access_token)
     end
 
-    page = JSON.parse(response.body)
-    items = page['data']
-    update_or_create_records(items)
-
-    next_page_link = page.dig('paging', 'next')
+    next_page_link = parse_and_create_records(response)
 
     loop do
       response = Faraday.get(next_page_link)
-      page = JSON.parse(response.body)
-      items = page['data']
-      update_or_create_records(items)
-
-      next_page_link = page.dig('paging', 'next')
+      next_page_link = parse_and_create_records(response)
       break if next_page_link.nil?
     end
 
     # CAROUSEL_ALBUM children:
     # https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/children#reading
+  end
+
+  def parse_and_create_records(response)
+    page = JSON.parse(response.body)
+    items = page['data']
+    update_or_create_records(items)
+    page.dig('paging', 'next')
   end
 
   def update_or_create_records(items)
