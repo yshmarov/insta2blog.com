@@ -25,11 +25,12 @@ class InstagramController < ApplicationController
     redirect_to user_path
   end
 
-  # TODO: move to other controller?
+  # GET /instagram/delete
   def delete
     render plain: 'Please contact yashm@outlook.com to delete your data'
   end
 
+  # GET /instagram/deauthorize
   def deauthorize
     render plain: 'Please contact yashm@outlook.com to deauthorize the app'
   end
@@ -38,10 +39,8 @@ class InstagramController < ApplicationController
 
   def redirect_uri
     if Rails.env.production?
-      # Rails.application.routes.url_helpers.instagram_callback_url
       instagram_callback_url
     else
-      # staging
       # 'localhost:3000/instagram/callback/'
       # 'https://insta2blog.com/instagram/callback'
       'https://insta2site.herokuapp.com/'

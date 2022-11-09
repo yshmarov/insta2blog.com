@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get 'u/:id', to: 'insta_users#show', as: :insta_user
   post 'u/:id/import', to: 'insta_users#import', as: :import_insta_user
 
-  get 'u/:id/p', to: 'insta_posts#index', as: :insta_user_posts
-  get 'u/:id/p/:post_id', to: 'insta_posts#show', as: :insta_user_post
+  get 'u/:user_id/p', to: 'insta_posts#index', as: :insta_user_posts
+  get 'u/:user_id/p/:id', to: 'insta_posts#show', as: :insta_user_post
 end
