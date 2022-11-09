@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @insta_users = @user.insta_users
+    @insta_users = @user.insta_users.order(created_at: :desc)
   end
 end
