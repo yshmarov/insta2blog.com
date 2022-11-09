@@ -67,6 +67,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
 end
 
 group :test do
@@ -84,3 +85,4 @@ gem 'data_migrate', '~> 8.1'
 
 gem 'meta-tags', '~> 2.18'
 gem 'honeybadger', '~> 4.0'
+gem 'passwordless'

@@ -1,1 +1,42 @@
-<%= link_to insta_user.at_username, insta_user_posts_path(insta_user), class: 'bg-slate-50 border border-slate-300 rounded-md p-4 lg:w-1/3 md:w-2/3 sm:w-full hover:bg-slate-100' %>
+<article class='bg-slate-50 border border-slate-300 max-w-md rounded-md'>
+  <div class='p-2 border-b border-y-slate-300 text-center'>
+    <h4 class='text-lg text-gray-700 font-semibold'>
+      <%= link_to insta_user.at_username, insta_user_posts_path(insta_user), class: 'hover:text-violet-700' %>
+    </h4>
+  </div>
+
+  <div class='p-2 border-b border-y-slate-300'>
+    <div class='text-center space-y-2'>
+      <div class='text-sm'>
+        <b><%= insta_user.media_count %></b>
+        posts detected
+      </div>
+
+      <div class='text-sm'>
+        <b><%= insta_user.insta_posts_count %></b>
+        posts imported
+      </div>
+
+      <%= button_to import_insta_user_path(insta_user), class: 'bg-violet-50 border border-dotted border-violet-300 rounded-md p-2 hover:bg-violet-100 text-violet-700' do %>
+        <i class="fa-solid fa-cloud-arrow-down text-violet-700"></i>
+        <span>Import posts</span>
+      <% end %>
+
+      <% if insta_user.last_import_at.present? %>
+        <span class='text-xs text-slate-500'>
+          Last import:
+          <%= insta_user.last_import_at.to_fs(:long) %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='p-2'>
+    <div>
+      <%= link_to 'Disconnect', '/instagram/deauthorize', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
+    </div>
+    <div>
+      <%= link_to 'Delete all data', '/instagram/delete', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
+    </div>
+  </div>
+</article>
