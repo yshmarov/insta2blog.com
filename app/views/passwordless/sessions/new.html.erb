@@ -11,7 +11,7 @@
   </h4>
 </div>
 
-<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, class: 'text-center space-y-4' do |f| %>
+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' }, class: 'text-center space-y-4' do |f| %>
   <div>
     <% email_field_name = :"passwordless[#{@email_field}]" %>
     <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true, class: 'rounded-md w-full' %>
