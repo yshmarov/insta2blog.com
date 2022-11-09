@@ -2,23 +2,31 @@ require 'test_helper'
 
 # rubocop:disable Style/NumericLiterals, Layout/LineLength
 class InstagramTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = users(:one)
+  end
+
   test 'authorize' do
     get instagram_authorize_url
     assert_response :redirect
   end
 
   test 'callback' do
+    passwordless_sign_in(@user)
+
     stub_ask_short_lived_access_token
     stub_ask_long_lived_access_token
     stub_ask_user_profile
 
     get instagram_callback_url(code: 'callbackcode123')
     assert_response :redirect
-    assert_redirected_to insta_user_path(InstaUser.last.id)
+    assert_redirected_to user_path
 
     follow_redirect!
     assert_response :success
-    assert_match "Click 'Import' to continue!", @response.body
+    assert_match 'Connect an Instagram account', @response.body
+    assert_match 'posts detected', @response.body
+    assert_match '305', @response.body
   end
 
   private

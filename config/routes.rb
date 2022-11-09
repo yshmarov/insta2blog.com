@@ -4,16 +4,19 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
+  passwordless_for :users, at: '/', as: :auth
+
+  get 'me', to: 'users#show', as: :user
+
   get 'instagram/authorize', to: "instagram#authorize"
   get 'instagram/callback', to: "instagram#callback"
   get 'instagram/deauthorize', to: "instagram#deauthorize"
   get 'instagram/delete', to: "instagram#delete"
 
-  delete "logout", to: "sessions#logout", as: :logout
-
-  get 'u/:id', to: 'insta_users#show', as: :insta_user
   get 'u', to: 'insta_users#index', as: :insta_users
-  get 'u/:id/p', to: 'insta_posts#index', as: :insta_user_posts
-  post 'u/:id/p/import', to: 'insta_posts#import', as: :import_insta_user_posts
-  get 'u/:id/p/:post_id', to: 'insta_posts#show', as: :insta_user_post
+  get 'u/:id', to: 'insta_users#show', as: :insta_user
+  post 'u/:id/import', to: 'insta_users#import', as: :import_insta_user
+
+  get 'u/:user_id/p', to: 'insta_posts#index', as: :insta_user_posts
+  get 'u/:user_id/p/:id', to: 'insta_posts#show', as: :insta_user_post
 end

@@ -1,0 +1,22 @@
+<div class='text-center space-y-4'>
+  <h1 class='font-semibold text-4xl'>
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <i class="fa-regular fa-envelope-open"></i>
+  </h1>
+  <h4 class='font-semibold text-lg'>
+    Enter your email to continue.
+  </h4>
+  <h4 class='font-semibold text-md'>
+    You will receive a magic link to log in.
+  </h4>
+</div>
+
+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' }, class: 'text-center space-y-4' do |f| %>
+  <div>
+    <% email_field_name = :"passwordless[#{@email_field}]" %>
+    <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true, class: 'rounded-md w-full' %>
+  </div>
+  <div>
+    <%= f.submit I18n.t('passwordless.sessions.new.submit'), class: 'cursor-pointer w-full bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md font-bold' %>
+  </div>
+<% end %>

@@ -19,15 +19,18 @@ class InstagramController < ApplicationController
     insta_user_id = InstaAuthService.new(code, redirect_uri).call
     return head :bad_request unless insta_user_id
 
-    session[:insta_user_id] = insta_user_id
+    insta_user = InstaUser.find(insta_user_id)
+    insta_user.update(user: current_user)
 
-    redirect_to insta_user_path(insta_user_id)
+    redirect_to user_path
   end
 
+  # GET /instagram/delete
   def delete
     render plain: 'Please contact yashm@outlook.com to delete your data'
   end
 
+  # GET /instagram/deauthorize
   def deauthorize
     render plain: 'Please contact yashm@outlook.com to deauthorize the app'
   end
@@ -36,10 +39,8 @@ class InstagramController < ApplicationController
 
   def redirect_uri
     if Rails.env.production?
-      # Rails.application.routes.url_helpers.instagram_callback_url
       instagram_callback_url
     else
-      # staging
       # 'localhost:3000/instagram/callback/'
       # 'https://insta2blog.com/instagram/callback'
       'https://insta2site.herokuapp.com/'
