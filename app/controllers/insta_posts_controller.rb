@@ -1,6 +1,7 @@
 class InstaPostsController < ApplicationController
   before_action :set_user
 
+  # GET /u/:id/p
   def index
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
 
@@ -12,21 +13,16 @@ class InstaPostsController < ApplicationController
              end
   end
 
-  def import
-    # TODO: should (also) trigger by a job
-    InstaMediaService.new(@insta_user).call
-    redirect_to insta_user_posts_path(@insta_user), notice: t('.success')
-  end
-
+  # GET /u/:id/p/:post_id
   def show
-    @post = @insta_user.insta_posts.find(params[:post_id])
+    @post = @insta_user.insta_posts.find(params[:id])
     @posts = @insta_user.insta_posts.without(@post).order('RANDOM()').limit(6)
   end
 
   private
 
   def set_user
-    @insta_user = InstaUser.find(params[:id])
+    @insta_user = InstaUser.find(params[:user_id])
     seo_tags
   end
 

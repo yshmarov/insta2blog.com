@@ -69,6 +69,7 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    bcrypt (3.1.18)
     better_html (2.0.1)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -130,6 +131,10 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -159,6 +164,9 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
+    passwordless (0.11.0)
+      bcrypt (~> 3.1.11)
+      rails (>= 5.1.4)
     pg (1.4.4)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -283,7 +291,9 @@ DEPENDENCIES
   honeybadger (~> 4.0)
   importmap-rails
   jbuilder
+  letter_opener
   meta-tags (~> 2.18)
+  passwordless
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)

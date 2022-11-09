@@ -8,16 +8,16 @@
     <span class='hidden lg:block'>Explore</span>
   <% end %>
   <% if current_user %>
-    <%= link_to insta_user_path(current_user), class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100' do %>
+    <%= link_to user_path, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100' do %>
       <i class="fa-solid fa-house text-slate-700"></i>
-      <span class='hidden lg:block'><%= current_user.at_username %></span>
+      <span class='hidden lg:block'><%= current_user.username %></span>
     <% end %>
-    <%= button_to logout_path, method: :delete, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100', form: { data: { turbo_confirm: 'Log out?' } } do %>
+    <%= button_to auth.sign_out_path, method: :delete, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100', form: { data: { turbo_confirm: 'Log out?' } } do %>
       <i class="fa-solid fa-arrow-right-from-bracket text-slate-700"></i>
       <span class='hidden lg:block'>Logout</span>
     <% end %>
   <% else %>
-    <%= link_to instagram_authorize_path, class: 'flex space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
+    <%= link_to auth.sign_in_path, class: 'flex space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
       <span>🎯</span>
       <span>START</span>
     <% end %>

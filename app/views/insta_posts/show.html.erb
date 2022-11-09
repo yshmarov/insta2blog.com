@@ -1,8 +1,4 @@
-<section class='flex flex-col space-y-4 items-center'>
-  <div class='text-sm text-gray-700 font-semibold'>
-    <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
-  </div>
-
+<section class='flex flex-col items-center'>
   <%= render partial: 'insta_posts/insta_post', locals: { post: @post } %>
 </section>
 
