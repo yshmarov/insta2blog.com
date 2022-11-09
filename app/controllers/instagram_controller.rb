@@ -22,7 +22,7 @@ class InstagramController < ApplicationController
     insta_user = InstaUser.find(insta_user_id)
     insta_user.update(user: current_user)
 
-    redirect_to insta_user_path(insta_user_id)
+    redirect_to user_path
   end
 
   # TODO: move to other controller?
