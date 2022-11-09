@@ -28,7 +28,9 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
     passwordless_sign_in(@user)
 
     stub_request(:get, 'https://graph.instagram.com/me/media?access_token&fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username')
-      .to_return(status: 200, body: response_body.to_json, headers: {})
+      .to_return(status: 200, body: response_body.to_json)
+    stub_request(:get, 'https://graph.instagram.com/v15.0/12345/media?access_token=IGQVJY&fields=id%2Ccaption%2Cmedia_type%2Cmedia_url%2Cpermalink%2Cthumbnail_url%2Ctimestamp%2Cusername&limit=25&after=DEF')
+      .to_return(status: 200, body: paginated_response_body.to_json)
 
     post import_insta_user_path(@insta_user)
     assert_response :redirect
@@ -65,6 +67,26 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
           'after' => 'XYZ' },
          'next' =>
         'https://graph.instagram.com/v15.0/12345/media?access_token=IGQVJY&fields=id%2Ccaption%2Cmedia_type%2Cmedia_url%2Cpermalink%2Cthumbnail_url%2Ctimestamp%2Cusername&limit=25&after=DEF' } }
+  end
+
+  def paginated_response_body
+    { 'data' =>
+      [{ 'id' => '179275846',
+         'caption' => 'Run forest run 🏃‍♂️ 🐕',
+         'media_type' => 'IMAGE',
+         'media_url' =>
+         'https://scontent.cdninstagram.com/v/t51.29350-15/3115039.jpg?_nc_cat=101&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=E2D66GZ',
+         'permalink' => 'https://www.instagram.com/p/CjqhZZ/',
+         'timestamp' => '2022-10-13T18:44:12+0000',
+         'username' => 'yaro_the_slav' },
+       { 'id' => '1791585433',
+         'caption' => 'Piadina - something between a Calzone and a Taco. Yum yum!😋',
+         'media_type' => 'IMAGE',
+         'media_url' =>
+         'https://scontent.cdninstagram.com/v/t51.29350-15/26127.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=fQNiTMukNTQ',
+         'permalink' => 'https://www.instagram.com/p/CWx4Xqh/',
+         'timestamp' => '2021-11-27T12:31:30+0000',
+         'username' => 'yaro_the_slav' }] }
   end
 end
 # rubocop:enable Metrics/MethodLength, Layout/LineLength
