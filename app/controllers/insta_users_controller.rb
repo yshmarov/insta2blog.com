@@ -4,15 +4,14 @@ class InstaUsersController < ApplicationController
 
   # discovery
   def index
-    @insta_users = InstaUser.all.order(insta_posts_count: :desc)
+    @insta_users = InstaUser.where.not(insta_posts_count: 0).order(insta_posts_count: :desc)
     set_meta_tags title: 'Blogs',
                   description: 'all instagram pages converted into blogs'
   end
 
   # IG account settings
   def show
-    set_meta_tags title: @insta_user.username,
-                  description: "#{@insta_user.username} blog website"
+    redirect_to insta_user_posts_path(@insta_user)
   end
 
   def import
