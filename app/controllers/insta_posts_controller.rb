@@ -1,14 +1,10 @@
 class InstaPostsController < ApplicationController
   before_action :set_user
 
+  # rubocop:disable Metrics/AbcSize
   # GET /u/:id/p
   def index
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
-    items = if cookies[:view].eql?('grid')
-              6
-            else
-              3
-            end
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     posts = if params[:caption].present?
@@ -16,13 +12,9 @@ class InstaPostsController < ApplicationController
             else
               posts
             end
-    @pagy, @posts = pagy_countless(posts, items:)
-
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
+    @pagy, @posts = pagy_countless(posts, items: items(cookies[:view]))
   end
+  # rubocop:enable Metrics/AbcSize
 
   # GET /u/:id/p/:post_id
   def show
@@ -31,6 +23,12 @@ class InstaPostsController < ApplicationController
   end
 
   private
+
+  def items(view)
+    return 6 if cookies[:view].eql?('grid')
+
+    3
+  end
 
   def set_user
     @insta_user = InstaUser.find(params[:user_id])
