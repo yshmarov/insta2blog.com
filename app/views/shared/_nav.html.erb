@@ -12,7 +12,7 @@
       <i class="fa-solid fa-house text-slate-700"></i>
       <span class='hidden lg:block'><%= current_user.username %></span>
     <% end %>
-    <%= button_to auth.sign_out_path, method: :delete, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100', form: { data: { turbo_confirm: 'Log out?' } } do %>
+    <%= button_to auth.sign_out_path, method: :delete, class: 'flex items-center space-x-2 p-2 rounded-md hover:bg-slate-100', form: { data: { turbo_confirm: t('sessions.logout.confirm') } } do %>
       <i class="fa-solid fa-arrow-right-from-bracket text-slate-700"></i>
       <span class='hidden lg:block'>Logout</span>
     <% end %>

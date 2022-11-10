@@ -33,11 +33,13 @@ en:
   hello: "Hello world"
   sessions:
     logout:
+      confirm: Log out?
       success: You have logged out
   insta_users:
     import:
       success: Posts have been imported!
     destroy:
-      success: Account and all data has been destroyed.
+      confirm: This will delete the account and all associated data. This can not be undone. Are you sure?
+      success: Account and all associated data has been destroyed.
   notifications:
     unauthorized: 'You are not logged in.'
