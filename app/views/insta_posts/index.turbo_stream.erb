@@ -1,0 +1,8 @@
+<%= turbo_stream.append "posts" do %>
+  <%= render 'insta_posts/view_collection' %>
+<% end %>
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination", src: insta_user_posts_path(@insta_user, page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+  <% end %>
+<% end %>

@@ -31,10 +31,9 @@
   <%= turbo_frame_tag 'results', target: '_top', data: { turbo_action: 'advance' } do %>
     <%#= request.url %>
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
-    <% if cookies[:view].eql?('grid') %>
-      <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
-    <% else %>
-      <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
-    <% end %>
+    <div id="posts">
+      <%= render 'insta_posts/view_collection' %>
+    </div>
+    <%= turbo_frame_tag 'pagination', src: insta_user_posts_path(@insta_user, format: :turbo_stream), loading: :lazy %>
   <% end %>
 </div>

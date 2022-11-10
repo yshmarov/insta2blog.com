@@ -86,3 +86,5 @@ gem 'data_migrate', '~> 8.1'
 gem 'meta-tags', '~> 2.18'
 gem 'honeybadger', '~> 4.0'
 gem 'passwordless'
+
+gem 'pagy', '~> 5.10'

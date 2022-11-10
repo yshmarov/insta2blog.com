@@ -1,0 +1,5 @@
+<% if cookies[:view].eql?('grid') %>
+  <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
+<% else %>
+  <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
+<% end %>
