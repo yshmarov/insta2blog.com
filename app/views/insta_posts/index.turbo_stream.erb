@@ -1,0 +1,12 @@
+<%= turbo_stream.append "posts" do %>
+  <% if cookies[:view].eql?('grid') %>
+    <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
+  <% else %>
+    <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
+  <% end %>
+<% end %>
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination", src: insta_user_posts_path(@insta_user, page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+  <% end %>
+<% end %>

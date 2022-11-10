@@ -12,6 +12,11 @@ class InstaPostsController < ApplicationController
               posts
             end
     @pagy, @posts = pagy_countless(posts, items: 6)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /u/:id/p/:post_id

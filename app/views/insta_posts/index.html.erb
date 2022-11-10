@@ -37,4 +37,6 @@
       <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
     <% end %>
   <% end %>
+    <div id="posts"></div>
+    <%= turbo_frame_tag 'pagination', src: insta_user_posts_path(@insta_user, format: :turbo_stream), loading: :lazy %>
 </div>
