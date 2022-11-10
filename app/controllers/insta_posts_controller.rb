@@ -4,6 +4,11 @@ class InstaPostsController < ApplicationController
   # GET /u/:id/p
   def index
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
+    items = if cookies[:view].eql?('grid')
+              6
+            else
+              3
+            end
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     posts = if params[:caption].present?
@@ -11,7 +16,7 @@ class InstaPostsController < ApplicationController
             else
               posts
             end
-    @pagy, @posts = pagy_countless(posts, items: 6)
+    @pagy, @posts = pagy_countless(posts, items:)
 
     respond_to do |format|
       format.html
