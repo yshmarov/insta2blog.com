@@ -41,6 +41,21 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
     assert_match 'Run forest', @response.body
   end
 
+  test '#delete' do
+    passwordless_sign_in(@user)
+
+    get user_path
+    assert_match @insta_user.username, @response.body
+
+    delete delete_insta_user_path(@insta_user)
+    assert_response :redirect
+    assert_redirected_to user_path
+
+    follow_redirect!
+    assert_response :success
+    assert_no_match @insta_user.username, @response.body
+  end
+
   private
 
   def response_body

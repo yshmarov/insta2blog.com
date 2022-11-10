@@ -32,11 +32,11 @@
   </div>
 
   <div class='p-2'>
-    <div>
-      <%= link_to 'Disconnect', '/instagram/deauthorize', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
-    </div>
-    <div>
-      <%= link_to 'Delete all data', '/instagram/delete', class: 'text-blue-600 hover:text-red-600', target: '_blank', rel: 'noopener' %>
+    <div class='flex justify-end text-xs text-slate-600'>
+      <%= button_to insta_user, method: :delete, form: { data: { turbo_confirm: t('insta_users.destroy.confirm') } }, class: 'hover:text-red-600' do %>
+        <i class="fa-solid fa-trash"></i>
+        <span>Delete</span>
+      <% end %>
     </div>
   </div>
 </article>
