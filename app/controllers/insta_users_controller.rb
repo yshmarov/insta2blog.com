@@ -27,7 +27,7 @@ class InstaUsersController < ApplicationController
   def destroy
     return unless record_owner?
 
-    # @insta_user.destroy
+    @insta_user.destroy
     redirect_to user_path, notice: t('.success')
   end
 
