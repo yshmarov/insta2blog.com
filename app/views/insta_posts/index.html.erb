@@ -32,11 +32,7 @@
     <%#= request.url %>
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
     <div id="posts">
-      <% if cookies[:view].eql?('grid') %>
-        <%= render partial: 'insta_posts/grid_view', locals: { posts: @posts } %>
-      <% else %>
-        <%= render partial: 'insta_posts/list_view', locals: { posts: @posts } %>
-      <% end %>
+      <%= render 'insta_posts/view_collection' %>
     </div>
     <%= turbo_frame_tag 'pagination', src: insta_user_posts_path(@insta_user, format: :turbo_stream), loading: :lazy %>
   <% end %>
