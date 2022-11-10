@@ -6,11 +6,12 @@ class InstaPostsController < ApplicationController
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
-    @posts = if params[:caption].present?
-               posts.where('caption ilike ?', "%#{params[:caption]}%")
-             else
-               posts
-             end
+    posts = if params[:caption].present?
+              posts.where('caption ilike ?', "%#{params[:caption]}%")
+            else
+              posts
+            end
+    @pagy, @posts = pagy_countless(posts, items: 6)
   end
 
   # GET /u/:id/p/:post_id
