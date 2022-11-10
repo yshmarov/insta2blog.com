@@ -1,6 +1,6 @@
 class InstaUsersController < ApplicationController
-  before_action :set_user, only: %i[show import]
-  before_action :require_user!, only: :import
+  before_action :set_user, only: %i[show import destroy]
+  before_action :require_user!, only: %i[import destroy]
 
   # GET /u
   def index
@@ -16,14 +16,26 @@ class InstaUsersController < ApplicationController
 
   # POST /u/:id/import
   def import
-    return unless @insta_user.user == current_user
+    return unless record_owner?
 
     # TODO: should trigger a job
     InstaMediaService.new(@insta_user).call
     redirect_to insta_user_posts_path(@insta_user), notice: t('.success')
   end
 
+  # DELETE /u/:id
+  def destroy
+    return unless record_owner?
+
+    # @insta_user.destroy
+    redirect_to user_path, notice: t('.success')
+  end
+
   private
+
+  def record_owner?
+    @insta_user.user == current_user
+  end
 
   def set_user
     @insta_user = InstaUser.find(params[:id])
