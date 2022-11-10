@@ -17,6 +17,7 @@ class InstaAuthService
     long_lived_access_token = ask_long_lived_access_token(short_lived_access_token)
     insta_access_token = InstaAccessToken.create(long_lived_access_token)
     insta_user = InstaMeService.new(insta_access_token.access_token).call
+    insta_user.insta_access_tokens.delete_all
     insta_access_token.update(insta_user_id: insta_user.id)
     # schedule job to create insta_user_media
     # InstaMediaService.new(long_lived_access_token).call
