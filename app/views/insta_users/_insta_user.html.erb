@@ -8,7 +8,10 @@
   <div class='p-2 border-b border-y-slate-300'>
     <div class='text-center space-y-2'>
       <div class='text-sm'>
-        <b><%= insta_user.media_count %></b>
+        <%= turbo_frame_tag 'counter', src: media_count_insta_user_path(insta_user, format: :turbo_stream), loading: :lazy %>
+        <b id="<%= insta_user.id %>_media_count" class='text-violet-700'>
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </b>
         posts detected
       </div>
 

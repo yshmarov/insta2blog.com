@@ -1,6 +1,6 @@
 class InstaUsersController < ApplicationController
-  before_action :set_user, only: %i[show import destroy]
-  before_action :require_user!, only: %i[import destroy]
+  before_action :set_user, only: %i[show import destroy media_count]
+  before_action :require_user!, only: %i[import destroy media_count]
 
   # GET /u
   def index
@@ -23,6 +23,16 @@ class InstaUsersController < ApplicationController
     redirect_to insta_user_posts_path(@insta_user), notice: t('.success')
   end
 
+  # GET /u/:id/media_count
+  def media_count
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("#{@insta_user.id}_media_count",
+                                                 html: check_media_count(@insta_user))
+      end
+    end
+  end
+
   # DELETE /u/:id
   def destroy
     return unless record_owner?
@@ -32,6 +42,19 @@ class InstaUsersController < ApplicationController
   end
 
   private
+
+  def check_media_count(insta_user)
+    return refresh_media_count(insta_user) if insta_user.last_profile_import_at.nil?
+    return insta_user.media_count if insta_user.last_profile_import_at > 15.minutes.ago
+
+    refresh_media_count(insta_user)
+  end
+
+  def refresh_media_count(insta_user)
+    insta_access_token = insta_user.insta_access_tokens.first
+    insta_user = InstaMeService.new(insta_access_token.access_token).call
+    insta_user.media_count
+  end
 
   def record_owner?
     @insta_user.user == current_user

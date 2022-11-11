@@ -26,7 +26,7 @@ class InstagramTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match 'Connect an Instagram account', @response.body
     assert_match 'posts detected', @response.body
-    assert_match '305', @response.body
+    assert_match 'yaro_the_slav', @response.body
   end
 
   private
