@@ -47,7 +47,7 @@ class InstaUsersController < ApplicationController
     return refresh_media_count(insta_user) if insta_user.last_profile_import_at.nil?
     return insta_user.media_count if insta_user.last_profile_import_at > 15.minutes.ago
 
-    request_media_count(insta_user)
+    refresh_media_count(insta_user)
   end
 
   def refresh_media_count(insta_user)

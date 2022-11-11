@@ -1,11 +1,11 @@
 # bin/rails generate integration_test sessions
 require 'test_helper'
 
-# rubocop:disable Metrics/MethodLength, Layout/LineLength
+# rubocop:disable Metrics/MethodLength, Layout/LineLength, Metrics/ClassLength
 class InstaUsersTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
-    @insta_user = InstaUser.create(username: 'yaro_the_slav', remote_id: '123', user: @user)
+    @insta_user = InstaUser.create(username: 'yaro_the_slav', media_count: 5, remote_id: '123', user: @user)
     @insta_user.insta_access_tokens.create
   end
 
@@ -39,6 +39,23 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_match 'Run forest', @response.body
+  end
+
+  test '#media_count' do
+    stub_ask_user_profile
+
+    passwordless_sign_in(@user)
+
+    @insta_user.insta_access_tokens.first.update(access_token: 'ABCDE')
+    assert_equal 5, @insta_user.media_count
+    get media_count_insta_user_path(@user.insta_users.first, format: :turbo_stream)
+    assert_response :success
+    @insta_user.reload
+    assert_equal 67, @insta_user.media_count
+
+    get user_path(@user)
+    assert_response :success
+    assert_match '67', @response.body
   end
 
   test '#delete' do
@@ -103,5 +120,12 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
          'timestamp' => '2021-11-27T12:31:30+0000',
          'username' => 'yaro_the_slav' }] }
   end
+
+  def stub_ask_user_profile
+    me_url = 'https://graph.instagram.com/me'
+    me_body = { 'id' => '123', 'username' => 'yaro_the_slav', 'account_type' => 'PERSONAL', 'media_count' => 67 }
+    stub_request(:get, "#{me_url}?access_token=ABCDE&fields=id,username,account_type,media_count")
+      .to_return(status: 200, body: me_body.to_json, headers: {})
+  end
 end
-# rubocop:enable Metrics/MethodLength, Layout/LineLength
+# rubocop:enable Metrics/MethodLength, Layout/LineLength, Metrics/ClassLength
