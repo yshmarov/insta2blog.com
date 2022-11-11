@@ -12,7 +12,8 @@ class InstaMeService
     insta_user.update(
       remote_id: insta_user_data['id'],
       account_type: insta_user_data['account_type'].downcase,
-      media_count: insta_user_data['media_count']
+      media_count: insta_user_data['media_count'],
+      last_profile_import_at: Time.zone.now
     )
     insta_user
   end
