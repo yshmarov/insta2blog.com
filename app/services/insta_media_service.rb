@@ -40,7 +40,6 @@ class InstaMediaService
     page.dig('paging', 'next')
   end
 
-  # TODO: move into a job
   def update_or_create_records(items)
     items.each do |item|
       insta_post = InstaPost.find_or_create_by(remote_id: item['id'].to_i)
