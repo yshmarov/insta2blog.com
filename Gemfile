@@ -88,3 +88,5 @@ gem 'honeybadger', '~> 4.0'
 gem 'passwordless'
 
 gem 'pagy', '~> 5.10'
+
+gem "good_job", "~> 3.6"

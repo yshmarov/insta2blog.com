@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount GoodJob::Engine => "good_job"
+
   root 'static_pages#landing_page'
   get 'pricing', to: 'static_pages#pricing'
   get 'terms', to: 'static_pages#terms'
