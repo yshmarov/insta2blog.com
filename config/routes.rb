@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # https://api.github.com/users/yshmarov
+  namespace :api do
+    namespace :v1 do
+      get 'insta_users', to: 'insta_users#index'
+      get 'insta_users/:id', to: 'insta_users#show'
+    end
+  end
+
   root 'static_pages#landing_page'
   get 'pricing', to: 'static_pages#pricing'
   get 'terms', to: 'static_pages#terms'
