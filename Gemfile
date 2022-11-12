@@ -89,4 +89,4 @@ gem 'passwordless'
 
 gem 'pagy', '~> 5.10'
 
-gem "good_job", "~> 3.6"
+gem 'good_job', '~> 3.6'

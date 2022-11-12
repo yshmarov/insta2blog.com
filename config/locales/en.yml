@@ -38,6 +38,7 @@ en:
   insta_users:
     import:
       success: Posts have been imported!
+      processing: Posts are being imported. This can take a few minutes.
     destroy:
       confirm: This will delete the account and all associated data. This can not be undone. Are you sure?
       success: Account and all associated data has been destroyed.

@@ -18,9 +18,14 @@ class InstaUsersController < ApplicationController
   def import
     return unless record_owner?
 
-    # TODO: should trigger a job
-    InstaMediaService.new(@insta_user).call
-    redirect_to insta_user_posts_path(@insta_user), notice: t('.success')
+    InstaMediaServiceJob.perform_later(@insta_user)
+    flash.now[:notice] = t('.processing')
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream:
+          turbo_stream.update('flash', partial: 'shared/flash')
+      end
+    end
   end
 
   # GET /u/:id/media_count
