@@ -32,13 +32,9 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
     stub_request(:get, 'https://graph.instagram.com/v15.0/12345/media?access_token=IGQVJY&fields=id%2Ccaption%2Cmedia_type%2Cmedia_url%2Cpermalink%2Cthumbnail_url%2Ctimestamp%2Cusername&limit=25&after=DEF')
       .to_return(status: 200, body: paginated_response_body.to_json)
 
-    post import_insta_user_path(@insta_user)
-    assert_response :redirect
-    assert_redirected_to insta_user_posts_path(InstaUser.last)
-
-    follow_redirect!
+    post import_insta_user_path(@insta_user, format: :turbo_stream)
     assert_response :success
-    assert_match 'Run forest', @response.body
+    assert_match 'Posts are being imported. This can take a few minutes', @response.body
   end
 
   test '#media_count' do
