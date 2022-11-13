@@ -18,6 +18,7 @@ class InstaMediaServiceJobTest < ActiveJob::TestCase
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def response_body
     { 'data' =>
       [{ 'id' => '179275846',
@@ -37,4 +38,5 @@ class InstaMediaServiceJobTest < ActiveJob::TestCase
          'timestamp' => '2021-11-27T12:31:30+0000',
          'username' => 'yaro_the_slav' }] }
   end
+  # rubocop:enable Metrics/MethodLength
 end
