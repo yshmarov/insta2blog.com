@@ -2,19 +2,19 @@ require 'test_helper'
 
 class ProcessCaptionServiceJobTest < ActiveJob::TestCase
   def setup
-    @user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
-    @post = InstaPost.create(insta_user: @user,
-                             remote_id: SecureRandom.random_number(9999),
-                             timestamp: Time.zone.now,
-                             caption: 'Post with a #hashtag')
+    @insta_user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
+    @insta_post = InstaPost.create(insta_user: @insta_user,
+                                   remote_id: SecureRandom.random_number(9999),
+                                   timestamp: Time.zone.now,
+                                   caption: 'Post with a #hashtag')
   end
 
-  test 'the truth' do
-    assert_nil @post.processed_caption
+  test 'runs job and updates processed_caption' do
+    assert_nil @insta_post.processed_caption
 
-    ProcessCaptionServiceJob.perform_now(@post)
+    ProcessCaptionServiceJob.perform_now(@insta_post)
 
-    assert_equal processed_caption_text.squish, @post.processed_caption
+    assert_equal processed_caption_text.squish, @insta_post.processed_caption
   end
 
   private
