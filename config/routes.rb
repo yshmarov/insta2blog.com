@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GoodJob::Engine => "good_job"
+  GoodJob::Engine.middleware.use(Rack::Auth::Basic) do |username, password|
+    ActiveSupport::SecurityUtils.secure_compare(Rails.application.credentials.dig(:http_auth, :username), username) &&
+      ActiveSupport::SecurityUtils.secure_compare(Rails.application.credentials.dig(:http_auth, :password), password)
   end
+  mount GoodJob::Engine, at: "good_job"
 
   root 'static_pages#landing_page'
   get 'pricing', to: 'static_pages#pricing'
