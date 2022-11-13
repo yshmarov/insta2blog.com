@@ -24,7 +24,7 @@ class InstaMediaService
     next_page_link = parse_and_create_records(response)
 
     loop do
-      response = Faraday.get(next_page_link)
+      response = Faraday.get(next_page_link) if next_page_link.present?
       next_page_link = parse_and_create_records(response)
       break if next_page_link.nil?
     end
@@ -52,7 +52,7 @@ class InstaMediaService
         timestamp: item['timestamp'],
         insta_user:
       )
-      ProcessCaptionService.new(insta_post).call
+      ProcessCaptionServiceJob.perform_later(insta_post)
     end
   end
 
