@@ -4,8 +4,12 @@
   </div>
   <div>
     <% if post.carousel_album? %>
-      <% post.insta_carousel_items.each do |carousel_item| %>
-        <%= image_tag carousel_item.media_url %>
+      <% post.insta_carousel_items.each do |item| %>
+        <% if item.image? %>
+          <%= image_tag item.media_url %>
+        <% elsif item.video? %>
+          <%= video_tag item.media_url, poster: item.thumbnail_url, controls: true %>
+        <% end %>
       <% end %>
     <% elsif post.image? %>
       <%= image_tag post.media_url %>
