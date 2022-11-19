@@ -1,8 +1,9 @@
-# CAROUSEL_ALBUM children:
+# GET CAROUSEL_ALBUM children for an InstaPost.
+# API reference:
 # https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/children#reading
 
 # insta_post = InstaPost.carousel_album.first
-# insta_post = InstaCarouselService.new(insta_post).call
+# InstaCarouselService.new(insta_post).call
 class InstaCarouselService
   attr_reader :insta_post, :insta_access_token
 
@@ -40,26 +41,28 @@ class InstaCarouselService
   def ask_media_id(id, access_token)
     response = Faraday.get("https://graph.instagram.com/#{id}") do |request|
       request.headers = headers,
-                        request.params = {
-                          fields: 'id,media_url',
-                          access_token:
-                        }
+                        request.params = carousel_item_params(access_token)
     end
 
     item = JSON.parse(response.body)
     insta_carousel_item = insta_post.insta_carousel_items
-                                    .find_or_create_by(remote_id: item['id'])
-    insta_carousel_item.update(media_url: item['media_url'])
+                                    .find_or_create_by(remote_id: item['id'].to_i)
+    insta_carousel_item.update(
+      media_type: item['media_type'].downcase,
+      media_url: item['media_url'],
+      permalink: item['permalink'],
+      thumbnail_url: item['thumbnail_url'],
+      timestamp: item['timestamp']
+    )
   end
 
   def headers
     { Accept: 'application/json' }
   end
 
-  # X?
-  def media_params(access_token)
+  def carousel_item_params(access_token)
     {
-      fields: 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username',
+      fields: 'id,media_type,media_url,permalink,thumbnail_url,timestamp',
       access_token:
     }
   end

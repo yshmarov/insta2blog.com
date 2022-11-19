@@ -65,7 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_145334) do
 
   create_table "insta_carousel_items", force: :cascade do |t|
     t.bigint "remote_id"
+    t.string "media_type"
     t.string "media_url"
+    t.text "permalink"
+    t.text "thumbnail_url"
+    t.datetime "timestamp"
     t.bigint "insta_post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
