@@ -52,9 +52,8 @@ class InstaMediaService
         timestamp: item['timestamp'],
         insta_user:
       )
-      # TODO: InstaCarouselServiceJob
-      InstaCarouselService.new(insta_post).call if insta_post.carousel_album?
-      ProcessCaptionServiceJob.perform_later(insta_post)
+      InstaCarouselJob.perform_later(insta_post) if insta_post.carousel_album?
+      ProcessCaptionServiceJob.perform_later(insta_post) if insta_post.caption.present?
     end
   end
 
