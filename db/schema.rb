@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_145334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["insta_post_id"], name: "index_insta_carousel_items_on_insta_post_id"
+    t.index ["remote_id"], name: "index_insta_carousel_items_on_remote_id", unique: true
   end
 
   create_table "insta_posts", force: :cascade do |t|
@@ -84,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_145334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "processed_caption"
+    t.integer "insta_carousel_items_count", default: 0, null: false
     t.index ["insta_user_id"], name: "index_insta_posts_on_insta_user_id"
     t.index ["remote_id"], name: "index_insta_posts_on_remote_id", unique: true
   end
