@@ -18,7 +18,11 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     get insta_user_posts_url(@insta_user)
 
     assert_response :success
+    assert_match 'Find a post', response.body
+    assert_no_match 'Post by this user', response.body
+    assert_no_match 'Post by other user', response.body
 
+    get insta_user_posts_url(@insta_user, format: :turbo_stream)
     assert_match 'Post by this user', response.body
     assert_no_match 'Post by other user', response.body
   end
