@@ -4,7 +4,7 @@
   </div>
   <div>
     <% if post.carousel_album? %>
-      <% post.insta_carousel_items.each do |item| %>
+      <% post.insta_carousel_items.order(created_at: :asc).each do |item| %>
         <% if item.image? %>
           <%= image_tag item.media_url %>
         <% elsif item.video? %>
