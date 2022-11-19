@@ -3,7 +3,11 @@
     <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
   <div>
-    <% if post.image? || post.carousel_album? %>
+    <% if post.carousel_album? %>
+      <% post.insta_carousel_items.each do |carousel_item| %>
+        <%= image_tag carousel_item.media_url %>
+      <% end %>
+    <% elsif post.image? %>
       <%= image_tag post.media_url %>
     <% elsif post.video? %>
       <%= video_tag post.media_url, poster: post.thumbnail_url, controls: true %>
