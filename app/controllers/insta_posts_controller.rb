@@ -5,6 +5,7 @@ class InstaPostsController < ApplicationController
   # GET /u/:id/p
   def index
     cookies[:view] = params[:view] if params[:view].present? && %w[grid list].include?(params[:view])
+    @page_list_spacing = 'space-y-4' if cookies[:view].eql?('list')
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     posts = if params[:caption].present?

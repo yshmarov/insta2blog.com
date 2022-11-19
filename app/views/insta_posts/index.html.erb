@@ -31,7 +31,7 @@
   <%= turbo_frame_tag 'results', target: '_top', data: { turbo_action: 'advance' } do %>
     <%#= request.url %>
     <%#= link_to 'Clear search', request.path if request.query_parameters.any? %>
-    <div id="posts"></div>
+    <div id="posts" class="<%= @page_list_spacing %>"></div>
     <%= turbo_frame_tag 'pagination', src: insta_user_posts_path(@insta_user, caption: params[:caption], format: :turbo_stream), loading: :lazy %>
   <% end %>
 </div>
