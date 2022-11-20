@@ -17,5 +17,15 @@ two:
   media_type: video
   media_url: MyText
   permalink: MyText
-  timestamp: 2022-10-17 13:43:51
+  timestamp: 2022-10-18 13:43:51
+  insta_user_id: 2
+
+three:
+  id: 3
+  remote_id: 3
+  caption: MyText
+  media_type: carousel_album
+  media_url: MyText
+  permalink: MyText
+  timestamp: 2022-10-19 13:43:51
   insta_user_id: 2
