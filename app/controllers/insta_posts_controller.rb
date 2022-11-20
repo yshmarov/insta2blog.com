@@ -8,12 +8,11 @@ class InstaPostsController < ApplicationController
     @page_list_spacing = 'space-y-4' if cookies[:view].eql?('list')
 
     posts = @insta_user.insta_posts.order(timestamp: :desc)
-    posts = if params[:caption].present?
-              posts.where('caption ilike ?', "%#{params[:caption]}%")
-            else
-              posts
-            end
+    posts = posts.where('caption ilike ?', "%#{params[:caption]}%") if params[:caption].present?
+    posts = posts.where(media_type: params[:media_type]) if params[:media_type].present?
     @pagy, @posts = pagy_countless(posts, items: items(cookies[:view]))
+
+    @skip_footer = true
   end
   # rubocop:enable Metrics/AbcSize
 
