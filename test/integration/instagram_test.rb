@@ -27,6 +27,11 @@ class InstagramTest < ActionDispatch::IntegrationTest
     assert_match 'Connect an Instagram account', @response.body
     assert_match 'posts detected', @response.body
     assert_match 'yaro_the_slav', @response.body
+
+    assert_equal @user.insta_users.count, 1
+
+    insta_access_token = @user.insta_users.first.insta_access_tokens.first
+    assert_equal insta_access_token.expires_at.round, (insta_access_token.created_at + insta_access_token.expires_in).round
   end
 
   private
