@@ -3,5 +3,5 @@ class InstaAccessToken < ApplicationRecord
 
   validates :access_token, :expires_in, :expires_at, presence: true
 
-  scope :expiring, -> { where('expires_at < ?', 14.days.from_now) }
+  scope :expiring, -> { where(expires_at: ..14.days.from_now) }
 end
