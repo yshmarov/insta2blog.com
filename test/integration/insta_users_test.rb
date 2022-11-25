@@ -6,7 +6,7 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
     @insta_user = InstaUser.create(username: 'yaro_the_slav', media_count: 5, remote_id: '123', user: @user)
-    @insta_user.insta_access_tokens.create
+    @insta_user.insta_access_tokens.create(access_token: 'ABCDE', expires_in: 40_000, expires_at: Time.zone.now + 40_000)
   end
 
   test 'index' do
@@ -41,8 +41,6 @@ class InstaUsersTest < ActionDispatch::IntegrationTest
     stub_ask_user_profile
 
     passwordless_sign_in(@user)
-
-    @insta_user.insta_access_tokens.first.update(access_token: 'ABCDE')
     assert_equal 5, @insta_user.media_count
     get media_count_insta_user_path(@user.insta_users.first, format: :turbo_stream)
     assert_response :success
