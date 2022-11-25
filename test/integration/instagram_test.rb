@@ -39,7 +39,7 @@ class InstagramTest < ActionDispatch::IntegrationTest
                     'client_secret' => Rails.application.credentials.dig(:instagram, :client_secret).to_s,
                     'code' => 'callbackcode123',
                     'grant_type' => 'authorization_code',
-                    'redirect_uri' => 'https://insta2site.herokuapp.com/' })
+                    'redirect_uri' => 'https://insta2blog.com/' })
       .to_return(status: 200, body: short_token_body.to_json, headers: {})
   end
 
