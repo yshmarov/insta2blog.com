@@ -20,6 +20,7 @@ class InstaRefreshTokenService
     return unless response.status == 200
 
     data = JSON.parse(response.body)
+    # {"access_token"=> "UXE5RDNR", "token_type"=>"bearer", "expires_in"=>5143192}
     insta_access_token.update(access_token: data['access_token'],
                               expires_in: data['expires_in'],
                               expires_at: Time.zone.now + data['expires_in'])
