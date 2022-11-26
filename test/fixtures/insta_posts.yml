@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+image:
   id: 1
   remote_id: 1
   caption: MyText
@@ -10,7 +10,7 @@ one:
   timestamp: 2022-10-17 13:43:51
   insta_user_id: 1
 
-two:
+video:
   id: 2
   remote_id: 2
   caption: MyText
@@ -20,7 +20,7 @@ two:
   timestamp: 2022-10-18 13:43:51
   insta_user_id: 2
 
-three:
+carousel_album:
   id: 3
   remote_id: 3
   caption: MyText

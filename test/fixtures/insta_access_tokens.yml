@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  access_token: ABCDE
+  expires_in: 50000
+  insta_user_id: 1
+  expires_at: 2022-10-17 13:43:51

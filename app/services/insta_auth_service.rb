@@ -15,12 +15,13 @@ class InstaAuthService
   def call
     short_lived_access_token = ask_short_lived_access_token(code)
     long_lived_access_token = ask_long_lived_access_token(short_lived_access_token)
-    insta_access_token = InstaAccessToken.create(long_lived_access_token)
+    insta_access_token = InstaAccessToken.new(long_lived_access_token)
+    insta_access_token.expires_at = Time.zone.now + insta_access_token.expires_in
+    insta_access_token.save
+
     insta_user = InstaMeService.new(insta_access_token.access_token).call
     insta_user.insta_access_tokens.delete_all
     insta_access_token.update(insta_user_id: insta_user.id)
-    # schedule job to create insta_user_media
-    # InstaMediaService.new(long_lived_access_token).call
     insta_user.id
   end
 

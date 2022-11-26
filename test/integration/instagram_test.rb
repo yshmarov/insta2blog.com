@@ -27,6 +27,11 @@ class InstagramTest < ActionDispatch::IntegrationTest
     assert_match 'Connect an Instagram account', @response.body
     assert_match 'posts detected', @response.body
     assert_match 'yaro_the_slav', @response.body
+
+    assert_equal @user.insta_users.count, 1
+
+    insta_access_token = @user.insta_users.first.insta_access_tokens.first
+    assert_equal insta_access_token.expires_at.round, (insta_access_token.created_at + insta_access_token.expires_in).round
   end
 
   private
@@ -39,7 +44,7 @@ class InstagramTest < ActionDispatch::IntegrationTest
                     'client_secret' => Rails.application.credentials.dig(:instagram, :client_secret).to_s,
                     'code' => 'callbackcode123',
                     'grant_type' => 'authorization_code',
-                    'redirect_uri' => 'https://insta2site.herokuapp.com/' })
+                    'redirect_uri' => 'https://insta2blog.com/' })
       .to_return(status: 200, body: short_token_body.to_json, headers: {})
   end
 

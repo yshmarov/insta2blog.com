@@ -43,7 +43,7 @@ class InstagramController < ApplicationController
     else
       # 'localhost:3000/instagram/callback/'
       # 'https://insta2blog.com/instagram/callback'
-      'https://insta2site.herokuapp.com/'
+      'https://insta2blog.com/'
     end
   end
 end
