@@ -1,16 +1,18 @@
-<div class='space-y-2'>
-  <%= link_to instagram_authorize_path, class: 'flex items-center space-x-2 font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md' do %>
+<section class='text-center'>
+  <%= link_to instagram_authorize_path, class: 'font-bold bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md inline-block' do %>
     <i class="fa-brands fa-instagram"></i>
     <span>Connect an Instagram account</span>
   <% end %>
 
   <% if @insta_users.any? %>
-      <h4 class='font-semibold text-lg'>
-        Connected Instagram accounts:
-      </h4>
+    <h1 class='font-semibold text-lg'>
+      Connected Instagram accounts:
+    </h1>
 
+    <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
       <% @insta_users.each do |insta_user| %>
         <%= render partial: 'insta_users/insta_user', locals: { insta_user: } %>
       <% end %>
+    </div>
   <% end %>
-</div>
+</section>
