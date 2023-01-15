@@ -3,6 +3,11 @@
     <%= link_to_unless_current @insta_user.at_username, insta_user_posts_path(@insta_user) %>
   </div>
 
+  <div>
+    <strong><%= @posts.count %></strong>
+    posts
+  </div>
+
   <%= form_with url: insta_user_posts_path(@insta_user),
                 method: :get,
                 class: 'space-y-2',
@@ -18,7 +23,7 @@
                         data: { action: 'input->debounce#search' } %>
     <%= form.select :media_type,
                     InstaPost.media_types.map { |k, v| [k.humanize, v] },
-                    { include_blank: 'Type' },
+                    { include_blank: 'All' },
                     { class: 'w-full rounded-md border border-slate-300',
                       onchange: 'this.form.requestSubmit()' } %>
   <% end %>

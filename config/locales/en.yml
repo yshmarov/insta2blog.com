@@ -43,3 +43,10 @@ en:
       success: Account and all associated data has been destroyed.
   notifications:
     unauthorized: 'You are not logged in.'
+  instagram:
+    callback:
+      success: "%{username}'s account connected."
+    delete:
+      notice: Please contact %{email} to delete your data.
+    deauthorize:
+      notice: Please contact %{email} to deauthorize the app.

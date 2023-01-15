@@ -22,17 +22,17 @@ class InstagramController < ApplicationController
     insta_user = InstaUser.find(insta_user_id)
     insta_user.update(user: current_user)
 
-    redirect_to user_path
+    redirect_to user_path, notice: t('.success', username: insta_user.username)
   end
 
   # GET /instagram/delete
   def delete
-    render plain: 'Please contact yashm@outlook.com to delete your data'
+    render plain: t('.notice', email: ApplicationMailer.default_params[:from])
   end
 
   # GET /instagram/deauthorize
   def deauthorize
-    render plain: 'Please contact yashm@outlook.com to deauthorize the app'
+    render plain: t('.notice', email: ApplicationMailer.default_params[:from])
   end
 
   private
@@ -40,10 +40,10 @@ class InstagramController < ApplicationController
   def redirect_uri
     if Rails.env.production?
       instagram_callback_url
-    else
-      # 'localhost:3000/instagram/callback/'
+      # 'https://www.insta2blog.com/instagram/callback'
       # 'https://insta2blog.com/instagram/callback'
-      'https://insta2blog.com/'
+    else
+      'https://localhost:3000/instagram/callback'
     end
   end
 end

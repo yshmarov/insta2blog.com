@@ -16,7 +16,7 @@ Share urls to your posts on the blog to drive traffic to your website.
 
 ### ✔️ Core features
 
-The application let's you "download" a snapshot of your instagram account on a regular basis.
+The application let's you "copy" a snapshot of your instagram posts on a regular basis.
 
 You can search for posts content in the local copy of the account.
 
@@ -46,6 +46,12 @@ API limitations: it does not get
 * media likes
 * media location
 * media stories
+
+**oAuth on localhost***
+
+Set up `https://localhost:3000/instagram/callback` as a 'Valid OAuth Redirect URI', because Facebook allows only `https`, not `http`.
+
+The redirect will go to the URL `https://localhost:3000/instagram/callback?code=***` and give a `Secure Connection Failed` error. Change `https` to `http` in the redirected URL and submit.
 
 ### 💻 Tech stack
 
