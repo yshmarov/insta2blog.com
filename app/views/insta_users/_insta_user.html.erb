@@ -1,11 +1,11 @@
-<article class='bg-slate-50 border border-slate-300 max-w-md rounded-md'>
+<article class='bg-slate-50 border border-slate-300 max-w-md rounded-md flex flex-col'>
   <div class='p-2 border-b border-y-slate-300 text-center'>
     <h4 class='text-lg text-gray-700 font-semibold'>
       <%= link_to insta_user.at_username, insta_user_posts_path(insta_user), class: 'hover:text-violet-700' %>
     </h4>
   </div>
 
-  <div class='p-2 border-b border-y-slate-300'>
+  <div class='p-2 border-b border-y-slate-300 flex-grow'>
     <div class='text-center space-y-2'>
       <div class='text-sm'>
         <%= turbo_frame_tag 'counter', src: media_count_insta_user_path(insta_user, format: :turbo_stream), loading: :lazy %>

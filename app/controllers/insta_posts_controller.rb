@@ -10,7 +10,8 @@ class InstaPostsController < ApplicationController
     posts = @insta_user.insta_posts.order(timestamp: :desc)
     posts = posts.where('caption ilike ?', "%#{params[:caption]}%") if params[:caption].present?
     posts = posts.where(media_type: params[:media_type]) if params[:media_type].present?
-    @pagy, @posts = pagy_countless(posts, items: items(cookies[:view]))
+    # @pagy, @posts = pagy_countless(posts, items: items(cookies[:view]))
+    @pagy, @posts = pagy(posts, items: items(cookies[:view]))
 
     @skip_footer = true
   end

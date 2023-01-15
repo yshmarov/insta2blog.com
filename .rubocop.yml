@@ -42,3 +42,7 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 20
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/**/*'
