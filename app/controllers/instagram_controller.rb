@@ -40,7 +40,6 @@ class InstagramController < ApplicationController
   def redirect_uri
     if Rails.env.production?
       instagram_callback_url
-      # 'https://www.insta2blog.com/instagram/callback'
       # 'https://insta2blog.com/instagram/callback'
     else
       'https://localhost:3000/instagram/callback'
