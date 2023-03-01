@@ -77,6 +77,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'rack-host-redirect'
+end
+
 gem 'faraday', '~> 2.6'
 
 gem 'friendly_id', '~> 5.4'
@@ -91,5 +95,3 @@ gem 'pagy', '~> 5.10'
 
 gem 'good_job', '~> 3.6'
 gem 'view_component'
-
-gem 'rack-host-redirect'
