@@ -95,5 +95,3 @@ gem 'pagy', '~> 5.10'
 
 gem 'good_job', '~> 3.6'
 gem 'view_component'
-
-gem 'rack-host-redirect'
