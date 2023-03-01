@@ -8,6 +8,8 @@ class InstaMeService
 
   def call
     insta_user_data = ask_user_profile
+    return if insta_user_data.blank?
+
     insta_user = InstaUser.find_or_initialize_by(username: insta_user_data['username'])
     insta_user.update(
       remote_id: insta_user_data['id'],
@@ -25,6 +27,8 @@ class InstaMeService
       req.headers = headers,
                     req.params = user_params(long_lived_access_token)
     end
+    return unless response.success?
+
     JSON.parse(response.body)
     # {"id"=>"5973192396032263", "username"=>"yaro_the_slav", "account_type"=>"PERSONAL", "media_count"=>305}
   end

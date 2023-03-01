@@ -57,8 +57,11 @@ class InstaUsersController < ApplicationController
 
   def refresh_media_count(insta_user)
     insta_access_token = insta_user.insta_access_tokens.first
-    insta_user = InstaMeService.new(insta_access_token.access_token).call
-    insta_user.media_count
+    fresh_insta_user = InstaMeService.new(insta_access_token.access_token).call
+    # TODO: update insta_user status to requires_authentication
+    return 0 unless fresh_insta_user
+
+    fresh_insta_user.media_count
   end
 
   def record_owner?
