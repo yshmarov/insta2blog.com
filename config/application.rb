@@ -21,7 +21,7 @@ module Insta2blog
     # config.eager_load_paths << Rails.root.join("extras")
     config.middleware.use Rack::HostRedirect, {
       "www.insta2blog.com" => "insta2blog.com",
-      "www.insta2blog.herokuapp.com" => "insta2blog.com"
+      "insta2blog.herokuapp.com" => "insta2blog.com"
     }
   end
 end
