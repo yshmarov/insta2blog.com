@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.middleware.insert_before ActionDispatch::SSL, Rack::HostRedirect, {
-    "www.insta2blog.com" => "insta2blog.com",
+    # "www.insta2blog.com" => "insta2blog.com",
     "insta2blog.herokuapp.com" => "insta2blog.com"
   }
 
