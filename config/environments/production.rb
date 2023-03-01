@@ -1,6 +1,11 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.middleware.insert_before ActionDispatch::SSL, Rack::HostRedirect, {
+    "www.insta2blog.com" => "insta2blog.com",
+    "insta2blog.herokuapp.com" => "insta2blog.com"
+  }
+
   config.action_mailer.default_url_options = { host: "insta2blog.com", protocol: "https" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
