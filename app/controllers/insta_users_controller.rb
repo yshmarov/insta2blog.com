@@ -18,7 +18,7 @@ class InstaUsersController < ApplicationController
   def import
     return unless record_owner?
 
-    InstaMediaServiceJob.perform_later(@insta_user)
+    InstaMediaJob.perform_later(@insta_user)
     flash.now[:notice] = t('.processing')
     respond_to do |format|
       format.turbo_stream do
