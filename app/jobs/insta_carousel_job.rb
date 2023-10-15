@@ -12,6 +12,8 @@ class InstaCarouselJob < ApplicationJob
     return unless @insta_post.carousel_album?
 
     @insta_access_token = @insta_post.insta_user.insta_access_tokens.active.last
+    return if @insta_access_token.nil?
+
     ask_media_children(@insta_post.remote_id, @insta_access_token.access_token)
   end
 
