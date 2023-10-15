@@ -1,16 +1,14 @@
 # insta_user = InstaUser.first
-# posts = InstaMediaService.new(insta_user).call
-class InstaMediaService
-  attr_reader :insta_user, :insta_access_token
+# InstaMediaJob.perform_now(insta_user)
+class InstaMediaJob < ApplicationJob
+  queue_as :default
 
-  def initialize(insta_user)
+  def perform(insta_user)
     @insta_user = insta_user
     @insta_access_token = insta_user.insta_access_tokens.last
-  end
 
-  def call
     ask_media
-    insta_user.update(last_import_at: Time.zone.now)
+    @insta_user.update(last_import_at: Time.zone.now)
   end
 
   private
@@ -18,7 +16,7 @@ class InstaMediaService
   def ask_media
     response = Faraday.get('https://graph.instagram.com/me/media') do |request|
       request.headers = headers,
-                        request.params = media_params(insta_access_token.access_token)
+                        request.params = media_params(@insta_access_token.access_token)
     end
 
     next_page_link = parse_and_create_records(response)
@@ -28,9 +26,6 @@ class InstaMediaService
       next_page_link = parse_and_create_records(response)
       break if next_page_link.nil?
     end
-
-    # CAROUSEL_ALBUM children:
-    # https://developers.facebook.com/docs/instagram-basic-display-api/reference/media/children#reading
   end
 
   def parse_and_create_records(response)
@@ -50,7 +45,7 @@ class InstaMediaService
         permalink: item['permalink'],
         thumbnail_url: item['thumbnail_url'],
         timestamp: item['timestamp'],
-        insta_user:
+        insta_user: @insta_user
       )
       InstaCarouselJob.perform_later(insta_post) if insta_post.carousel_album?
       ProcessCaptionJob.perform_later(insta_post) if insta_post.caption.present?
