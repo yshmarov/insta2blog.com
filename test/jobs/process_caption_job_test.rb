@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# rubocop:disable Layout/LineLength
 class ProcessCaptionJobTest < ActiveJob::TestCase
   def setup
     @insta_user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
@@ -33,3 +34,4 @@ class ProcessCaptionJobTest < ActiveJob::TestCase
     TEXT
   end
 end
+# rubocop:enable Layout/LineLength
