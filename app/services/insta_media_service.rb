@@ -5,7 +5,7 @@ class InstaMediaService
 
   def initialize(insta_user)
     @insta_user = insta_user
-    @insta_access_token = insta_user.insta_access_tokens.last
+    @insta_access_token = insta_user.insta_access_tokens.active.last
   end
 
   def call
