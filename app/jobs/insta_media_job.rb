@@ -5,7 +5,8 @@ class InstaMediaJob < ApplicationJob
 
   def perform(insta_user)
     @insta_user = insta_user
-    @insta_access_token = insta_user.insta_access_tokens.last
+    @insta_access_token = insta_user.insta_access_tokens.active.last
+    return if @insta_access_token.nil?
 
     ask_media
     @insta_user.update(last_import_at: Time.zone.now)

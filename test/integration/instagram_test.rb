@@ -30,7 +30,7 @@ class InstagramTest < ActionDispatch::IntegrationTest
 
     assert_equal @user.insta_users.count, 1
 
-    insta_access_token = @user.insta_users.first.insta_access_tokens.first
+    insta_access_token = @user.insta_users.first.insta_access_tokens.active.last
     assert_equal insta_access_token.expires_at.round, (insta_access_token.created_at + insta_access_token.expires_in).round
   end
 

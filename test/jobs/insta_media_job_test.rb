@@ -3,13 +3,18 @@ require 'test_helper'
 class InstaMediaJobTest < ActiveJob::TestCase
   def setup
     @insta_user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
-    @insta_access_token = @insta_user.insta_access_tokens.create
+    # @insta_access_token = @insta_user.insta_access_tokens.create
+    @insta_user.insta_access_tokens.create(access_token: 'ABCDE', expires_in: 40_000, expires_at: Time.zone.now + 40_000)
   end
 
   test 'imports posts from instagram api' do
     assert_equal @insta_user.insta_posts.count, 0
-    stub_request(:get, 'https://graph.instagram.com/me/media?access_token&fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username')
+
+    access_token = @insta_user.insta_access_tokens.active.last.access_token
+
+    stub_request(:get, "https://graph.instagram.com/me/media?access_token=#{access_token}&fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username")
       .to_return(status: 200, body: response_body.to_json)
+
     InstaMediaJob.perform_now(@insta_user)
 
     assert_equal 2, @insta_user.insta_posts.count
