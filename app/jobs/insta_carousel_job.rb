@@ -39,7 +39,7 @@ class InstaCarouselJob < ApplicationJob
 
     item = JSON.parse(response.body)
     insta_carousel_item = @insta_post.insta_carousel_items
-                                    .find_or_create_by(remote_id: item['id'].to_i)
+                                     .find_or_create_by(remote_id: item['id'].to_i)
     insta_carousel_item.update(
       media_type: item['media_type'].downcase,
       media_url: item['media_url'],
