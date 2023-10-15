@@ -6,7 +6,7 @@
       <% if current_user %>
         <%= link_to 'Open app', user_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
       <% else %>
-        <%= link_to '🎯 Connect your Instagram', auth.sign_in_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
+        <%= link_to '🎯 Connect your Instagram', users_sign_in_path, class: 'bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-4 rounded-md font-bold' %>
       <% end %>
     </div>
   </section>
