@@ -7,7 +7,7 @@ class InstaPostsTest < ApplicationSystemTestCase
                              media_type: 'image',
                              media_url: 'https://insta2blog.com',
                              caption: 'Post with a #hashtag and a second #hash')
-    ProcessCaptionService.new(@post).call
+    ProcessCaptionJob.perform_now(@post)
   end
 
   test 'insta_posts#show' do

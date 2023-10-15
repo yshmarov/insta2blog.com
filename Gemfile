@@ -81,19 +81,14 @@ group :production do
   gem 'rack-host-redirect'
 end
 
-gem 'faraday', '~> 2.6'
-
-gem 'friendly_id', '~> 5.4'
-
-gem 'data_migrate', '~> 8.1'
-
-gem 'meta-tags', '~> 2.18'
-gem 'honeybadger', '~> 4.0'
-gem 'passwordless'
-
-gem 'pagy', '~> 5.10'
-
-gem 'good_job', '~> 3.6'
+gem 'faraday'
+gem 'friendly_id'
+gem 'data_migrate'
+gem 'meta-tags'
+gem 'honeybadger'
+gem 'passwordless', '~> 0.11.0'
+# gem 'passwordless'
+gem 'pagy'
+gem 'good_job'
 gem 'view_component'
-
 gem 'rack-host-redirect'

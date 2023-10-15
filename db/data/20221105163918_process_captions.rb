@@ -3,7 +3,7 @@
 class ProcessCaptions < ActiveRecord::Migration[7.0]
   def up
     InstaPost.all.each do |insta_post|
-      ProcessCaptionService.new(insta_post).call
+      ProcessCaptionJob.perform_now(insta_post)
     end
   end
 
