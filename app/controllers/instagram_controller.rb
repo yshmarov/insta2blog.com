@@ -1,3 +1,4 @@
+# connect/disconnect instagram account
 class InstagramController < ApplicationController
   CLIENT_ID = Rails.application.credentials.dig(:instagram, :client_id).to_s
   CLIENT_SECRET = Rails.application.credentials.dig(:instagram, :client_secret).to_s
@@ -27,11 +28,13 @@ class InstagramController < ApplicationController
 
   # GET /instagram/delete
   def delete
+    # TODO: deauthorize instagram account, delete user, delete all posts
     render plain: t('.notice', email: ApplicationMailer.default_params[:from])
   end
 
   # GET /instagram/deauthorize
   def deauthorize
+    # TODO: deauthorize instagram account. Do not delete user and posts
     render plain: t('.notice', email: ApplicationMailer.default_params[:from])
   end
 
