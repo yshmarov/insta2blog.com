@@ -3,7 +3,8 @@ require 'test_helper'
 class InstaMediaJobTest < ActiveJob::TestCase
   def setup
     @insta_user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
-    @insta_access_token = @insta_user.insta_access_tokens.create
+    # @insta_access_token = @insta_user.insta_access_tokens.create
+    @insta_user.insta_access_tokens.create(access_token: 'ABCDE', expires_in: 40_000, expires_at: Time.zone.now + 40_000)
   end
 
   test 'imports posts from instagram api' do
