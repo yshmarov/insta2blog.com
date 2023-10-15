@@ -53,7 +53,7 @@ class InstaMediaService
         insta_user:
       )
       InstaCarouselJob.perform_later(insta_post) if insta_post.carousel_album?
-      ProcessCaptionServiceJob.perform_later(insta_post) if insta_post.caption.present?
+      ProcessCaptionJob.perform_later(insta_post) if insta_post.caption.present?
     end
   end
 

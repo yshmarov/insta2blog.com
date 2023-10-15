@@ -12,8 +12,8 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     user2 = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
     post2 = InstaPost.create(insta_user: user2, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
                              caption: 'Post by other user')
-    ProcessCaptionService.new(post1).call
-    ProcessCaptionService.new(post2).call
+    ProcessCaptionJob.perform_now(post1)
+    ProcessCaptionJob.perform_now(post2)
 
     get insta_user_posts_url(@insta_user)
 
@@ -40,8 +40,8 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match 'More posts from', @response.body
 
-    # displays body if ProcessCaptionService was run
-    ProcessCaptionService.new(@post).call
+    # displays body if ProcessCaptionJob was run
+    ProcessCaptionJob.perform_now(@post)
     get insta_user_post_url(@insta_user, @post)
     assert_response :success
     assert_match 'some text', response.body

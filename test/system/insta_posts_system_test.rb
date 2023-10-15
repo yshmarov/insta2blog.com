@@ -1,13 +1,13 @@
 require 'application_system_test_case'
 
-class InstaPostsTest < ApplicationSystemTestCase
+class InstaPostsSystemTest < ApplicationSystemTestCase
   def setup
     @user = InstaUser.create(username: 'za.yuliia', remote_id: SecureRandom.random_number(9999))
     @post = InstaPost.create(insta_user: @user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now,
                              media_type: 'image',
                              media_url: 'https://insta2blog.com',
                              caption: 'Post with a #hashtag and a second #hash')
-    ProcessCaptionService.new(@post).call
+    ProcessCaptionJob.perform_now(@post)
   end
 
   test 'insta_posts#show' do
