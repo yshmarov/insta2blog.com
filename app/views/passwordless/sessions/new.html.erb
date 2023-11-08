@@ -20,9 +20,10 @@
                 class: 'space-y-4') do |f| %>
     <% email_field_name = :"passwordless[#{email_field}]" %>
     <%= f.label email_field_name, t("passwordless.sessions.new.email.label") %>
-    <%= text_field_tag email_field_name,
+    <%= email_field_tag email_field_name,
                       params.fetch(email_field_name, nil),
                       required: true,
+                      autofocus: true,
                       placeholder: t("passwordless.sessions.new.email.placeholder"),
                       class: 'rounded-md w-full' %>
     <%= f.submit t("passwordless.sessions.new.submit"), class: 'cursor-pointer w-full bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md font-bold' %>
