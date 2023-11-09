@@ -12,7 +12,7 @@ class RefreshInstaTokenJobTest < ActiveJob::TestCase
       .to_return(status: 200, body: response_body.to_json)
 
     assert @insta_access_token.expires_at < 10.days.from_now
-    InstaRefreshTokenService.new(insta_access_token_id).call
+    RefreshInstaTokenJob.perform_now(insta_access_token_id)
     @insta_access_token.reload
     assert @insta_access_token.expires_at > 30.days.from_now
   end

@@ -1,4 +1,6 @@
 class InstaPostsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_user
 
   # rubocop:disable Metrics/AbcSize

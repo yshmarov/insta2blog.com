@@ -18,7 +18,7 @@ class InstaUsersController < ApplicationController
   def import
     return unless record_owner?
 
-    InstaMediaServiceJob.perform_later(@insta_user)
+    InstaMediaJob.perform_later(@insta_user)
     flash.now[:notice] = t('.processing')
     respond_to do |format|
       format.turbo_stream do
@@ -56,7 +56,10 @@ class InstaUsersController < ApplicationController
   end
 
   def refresh_media_count(insta_user)
-    insta_access_token = insta_user.insta_access_tokens.first
+    insta_access_token = insta_user.insta_access_tokens.active.last
+    return insta_user.media_count if insta_access_token.nil?
+
+    # TODO: handle refresh expired access token
     insta_user = InstaMeService.new(insta_access_token.access_token).call
     insta_user.media_count
   end
