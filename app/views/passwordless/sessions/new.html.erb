@@ -1,22 +1,33 @@
-<div class='text-center space-y-4'>
-  <h1 class='font-semibold text-4xl'>
-    <i class="fa-solid fa-wand-magic-sparkles"></i>
-    <i class="fa-regular fa-envelope-open"></i>
-  </h1>
-  <h4 class='font-semibold text-lg'>
-    Enter your email to continue.
-  </h4>
-  <h4 class='font-semibold text-md'>
-    You will receive a magic link to log in.
-  </h4>
-</div>
+<div class='border-2 rounded-lg p-4 space-y-4'>
+  <div class="text-center">
+    <h1 class='font-semibold text-4xl'>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-regular fa-envelope-open"></i>
+    </h1>
+    <h4 class='font-semibold text-lg'>
+      Enter your email to continue.
+    </h4>
+    <h4 class='font-semibold text-md'>
+      You will receive a magic link to log in.
+    </h4>
+  </div>
 
-<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' }, class: 'text-center space-y-4' do |f| %>
-  <div>
-    <% email_field_name = :"passwordless[#{@email_field}]" %>
-    <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true, class: 'rounded-md w-full' %>
-  </div>
-  <div>
-    <%= f.submit I18n.t('passwordless.sessions.new.submit'), class: 'cursor-pointer w-full bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md font-bold' %>
-  </div>
-<% end %>
+  <hr>
+
+  <%= form_with(model: @session,
+                url: url_for(action: 'new'),
+                data: { turbo: 'false' },
+                class: 'space-y-4') do |f| %>
+    <% email_field_name = :"passwordless[#{email_field}]" %>
+    <%= f.label email_field_name,
+                t('passwordless.sessions.new.email.label'),
+                for: "passwordless_#{email_field}" %>
+    <%= email_field_tag email_field_name,
+                        params.fetch(email_field_name, nil),
+                        required: true,
+                        autofocus: true,
+                        placeholder: t('passwordless.sessions.new.email.placeholder'),
+                        class: 'rounded-md w-full' %>
+    <%= f.submit t('passwordless.sessions.new.submit'), class: 'cursor-pointer w-full bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md font-bold' %>
+  <% end %>
+</div>

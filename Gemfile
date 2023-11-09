@@ -36,9 +36,6 @@ gem 'redis', '~> 4.0'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -64,9 +61,6 @@ group :development do
   gem 'webmock', '~> 3.18'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
   gem 'letter_opener'
 end
 
@@ -85,8 +79,7 @@ gem 'friendly_id'
 gem 'data_migrate'
 gem 'meta-tags'
 gem 'honeybadger'
-gem 'passwordless', '~> 0.11.0'
-# gem 'passwordless'
+gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
 gem 'pagy'
 gem 'good_job'
 gem 'view_component'

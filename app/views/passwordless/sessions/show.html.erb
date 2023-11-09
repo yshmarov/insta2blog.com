@@ -1,0 +1,27 @@
+<div class='border-2 rounded-lg p-4 space-y-4'>
+  <div class="text-center">
+    <h1 class='font-semibold text-4xl'>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <i class="fa-regular fa-envelope-open"></i>
+    </h1>
+    <h4 class='font-semibold text-lg'>
+      <%= t('passwordless.sessions.create.email_sent') %>
+    </h4>
+  </div>
+
+  <hr>
+
+  <%= form_with(model: @session,
+                url: url_for(action: 'update'),
+                scope: 'passwordless',
+                method: 'patch',
+                data: { turbo: 'false' },
+                class: 'space-y-4') do |f| %>
+    <%= f.label :token %>
+    <%= f.text_field :token,
+                     placeholder: 'XXXXXX',
+                     autocomplete: 'off',
+                     class: 'rounded-md w-full' %>
+    <%= f.submit 'Confirm', class: 'cursor-pointer w-full bg-violet-700 hover:bg-violet-900 text-fuchsia-50 p-2 rounded-md font-bold' %>
+  <% end %>
+</div>
