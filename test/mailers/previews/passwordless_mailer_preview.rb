@@ -1,6 +1,7 @@
 class PasswordlessMailerPreview < ActionMailer::Preview
-  def magic_link
-    session = Passwordless::Session.first
-    Passwordless::Mailer.magic_link(session).deliver_now
+  def sign_in
+    user = User.build(email: "foo@bar.com")
+    session = Passwordless::Session.create!(authenticatable: user)
+    Passwordless::Mailer.sign_in(session)
   end
 end

@@ -79,15 +79,7 @@ gem 'friendly_id'
 gem 'data_migrate'
 gem 'meta-tags'
 gem 'honeybadger'
-# gem 'passwordless', '~> 0.11.0'
-# gem 'passwordless'
 gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
-# inspect code from passwordless gem command:
-# bundle open passwordless
-# To open a bundled gem, set $EDITOR or $BUNDLER_EDITOR
-# clear cached gems:
-# bundle clean --force
-
 gem 'pagy'
 gem 'good_job'
 gem 'view_component'

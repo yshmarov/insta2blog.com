@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mikker/passwordless.git
-  revision: a7891a8be98cf9f4771155ac470b6811e660c473
+  revision: cd6ec4f261f218aeff82c7d1521c4a7ced506ab9
   branch: master
   specs:
     passwordless (1.1.0)

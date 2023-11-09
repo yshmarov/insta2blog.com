@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
-  passwordless_for :users, at: '/'
+  passwordless_for :users
 
   get 'me', to: 'users#show', as: :user
 
