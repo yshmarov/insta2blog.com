@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby file: ".ruby-version"
+ruby file: '.ruby-version'
 
-gem "rails", github: "rails/rails", branch: "main"
+gem 'rails', github: 'rails/rails', branch: 'main'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
