@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: '.ruby-version'
 
-gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'rails', '7.1.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -78,7 +78,10 @@ gem 'friendly_id'
 gem 'data_migrate'
 gem 'meta-tags'
 gem 'honeybadger'
-gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
+gem 'passwordless'
+# gem 'passwordless', '1.1.1'
+# gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
+# gem 'passwordless', path: '/Users/yaroslavshmarov/Documents/GitHub.nosync/passwordless'
 gem 'pagy'
 gem 'good_job'
 gem 'view_component'
