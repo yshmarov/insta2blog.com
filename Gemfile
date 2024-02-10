@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby file: '.ruby-version'
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.1'
+gem 'rails', '7.1.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -29,12 +28,6 @@ gem 'tailwindcss-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
-
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -80,6 +73,10 @@ gem 'data_migrate'
 gem 'meta-tags'
 gem 'honeybadger'
 gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
+# gem 'passwordless'
+# gem 'passwordless', '1.1.1'
+# gem 'passwordless', github: 'mikker/passwordless', branch: 'master'
+# gem 'passwordless', path: '/Users/yaroslavshmarov/Documents/GitHub.nosync/passwordless'
 gem 'pagy'
 gem 'good_job'
 gem 'view_component'
