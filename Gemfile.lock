@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/mikker/passwordless.git
+  revision: cd6ec4f261f218aeff82c7d1521c4a7ced506ab9
+  branch: master
+  specs:
+    passwordless (1.1.0)
+      bcrypt (>= 3.1.11)
+      rails (>= 5.1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -203,9 +212,6 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    passwordless (1.4.0)
-      bcrypt (>= 3.1.11)
-      rails (>= 5.1.4)
     pg (1.5.4)
     psych (5.1.2)
       stringio
@@ -355,7 +361,7 @@ DEPENDENCIES
   letter_opener
   meta-tags
   pagy
-  passwordless
+  passwordless!
   pg (~> 1.1)
   puma
   rack-host-redirect
