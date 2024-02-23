@@ -14,7 +14,16 @@
     <% elsif post.image? %>
       <%= image_tag post.media_url %>
     <% elsif post.video? %>
-      <%= video_tag post.media_url, poster: post.thumbnail_url, controls: true %>
+      <div data-controller='autoplay'>
+        <%= video_tag post.media_url,
+                      poster: post.thumbnail_url,
+                      autoplay: true,
+                      controls: true,
+                      data: { autoplay_target: 'player' } %>
+        <%= link_to nil,
+                    insta_user_post_path(@insta_user, @insta_user.insta_posts.video.sample),
+                    data: {autoplay_target: 'next'} %>
+      </div>
     <% end %>
   </div>
   <div class='p-4 border-b border-y-slate-300'>
