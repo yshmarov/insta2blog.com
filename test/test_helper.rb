@@ -15,4 +15,9 @@ class ActiveSupport::TestCase
   # WebMock.disable_net_connect!(allow_localhost: true) # required for not running real requests in test env (enforce stub)
 
   # Add more helper methods to be used by all tests here...
+  if defined?(ActionDispatch::IntegrationTest)
+    ActiveSupport.on_load(:action_dispatch_integration_test) do
+      include ::Passwordless::TestHelpers::RequestTestCase
+    end
+  end
 end
