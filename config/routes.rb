@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       ActiveSupport::SecurityUtils.secure_compare(Rails.application.credentials.dig(:http_auth, :password), password)
   end
   mount GoodJob::Engine, at: "good_job"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   root 'static_pages#landing_page'
   get 'pricing', to: 'static_pages#pricing'
