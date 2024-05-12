@@ -35,7 +35,7 @@ class InstaPostsTest < ActionDispatch::IntegrationTest
     assert_no_match 'some text', response.body
 
     # when user has other posts, displays "more posts from"
-    InstaPost.create(insta_user: @insta_user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now, media_url: 'itos-logo.png')
+    InstaPost.create(insta_user: @insta_user, remote_id: SecureRandom.random_number(9999), timestamp: Time.zone.now, media_url: 'logo-214x214.png')
     get insta_user_post_url(@insta_user, @post)
     assert_response :success
     assert_match 'More posts from', @response.body
