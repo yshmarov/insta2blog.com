@@ -1,0 +1,32 @@
+{
+  "name": "Insta2blog",
+  "short_name": "Insta2blog",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "One click blog from your Instagram.",
+  "icons": [
+    {
+      "src": "logo-214x214.png",
+      "sizes": "214x214",
+      "type": "image/png"
+    }
+  ],
+  "screenshots" : [
+    {
+      "src": "wide.png",
+      "sizes": "2920x1956",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "One click blog from your Instagram."
+    },
+    {
+      "src": "narrow.png",
+      "sizes": "994x1932",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "One click blog from your Instagram."
+    }
+  ]
+}

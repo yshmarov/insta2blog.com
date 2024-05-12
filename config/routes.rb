@@ -28,4 +28,8 @@ Rails.application.routes.draw do
 
   get 'u/:user_id/p', to: 'insta_posts#index', as: :insta_user_posts
   get 'u/:user_id/p/:id', to: 'insta_posts#show', as: :insta_user_post
+
+  # Render dynamic PWA files from app/views/pwa/*
+  get "service-worker" => "pwa#service_worker", as: :pwa_service_worker
+  get "manifest" => "pwa#manifest", as: :pwa_manifest
 end
