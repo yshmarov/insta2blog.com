@@ -1,5 +1,9 @@
 ## [insta2blog.com](https://insta2blog.com)
 
+<img width="1710" alt="Screenshot 2024-10-05 at 10 33 04" src="https://github.com/user-attachments/assets/23279ff9-8a9d-4212-bc2b-801607678e23">
+
+<img width="1710" alt="Screenshot 2024-10-05 at 10 33 48" src="https://github.com/user-attachments/assets/d2fcb986-e9fc-4521-b583-791cb0fbf7a5">
+
 ### ⁉️ Why did I create this?
 
 A few days ago wife `@za.yuliia` was banned from instagram for her 🇺🇦 posts. There was no indication that her account would be restored. She felt awful about it, because she had spent a lot of time creating her page, her posts. Hopefully this tool would give her a reliable data backup that is easy to access.
