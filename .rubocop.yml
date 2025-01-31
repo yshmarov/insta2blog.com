@@ -55,3 +55,6 @@ Metrics/AbcSize:
 Lint/MissingSuper:
   Exclude:
     - "app/components/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

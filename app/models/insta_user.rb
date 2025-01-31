@@ -10,6 +10,6 @@ class InstaUser < ApplicationRecord
   friendly_id :username, use: %i[slugged finders]
 
   def at_username
-    ['@', username].join
+    [ '@', username ].join
   end
 end

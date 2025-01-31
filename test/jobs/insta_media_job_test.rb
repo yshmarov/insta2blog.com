@@ -26,7 +26,7 @@ class InstaMediaJobTest < ActiveJob::TestCase
   # rubocop:disable Metrics/MethodLength
   def response_body
     { 'data' =>
-      [{ 'id' => '179275846',
+      [ { 'id' => '179275846',
          'caption' => 'Run forest run 🏃‍♂️ 🐕',
          'media_type' => 'IMAGE',
          'media_url' =>
@@ -41,7 +41,7 @@ class InstaMediaJobTest < ActiveJob::TestCase
          'https://scontent.cdninstagram.com/v/t51.29350-15/26127.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=fQNiTMukNTQ',
          'permalink' => 'https://www.instagram.com/p/CWx4Xqh/',
          'timestamp' => '2021-11-27T12:31:30+0000',
-         'username' => 'yaro_the_slav' }] }
+         'username' => 'yaro_the_slav' } ] }
   end
   # rubocop:enable Metrics/MethodLength
 end
