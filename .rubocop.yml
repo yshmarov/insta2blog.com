@@ -1,17 +1,17 @@
-require: 
+require:
   - rubocop-rails
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.3.0
+  TargetRubyVersion: 3.4.1
   Exclude:
     - vendor/bundle/**/*
-    - '**/db/schema.rb'
-    - '**/db/**/*'
-    - 'config/**/*'
-    - 'bin/*'
-    - 'config.ru'
-    - 'Rakefile'
+    - "**/db/schema.rb"
+    - "**/db/**/*"
+    - "config/**/*"
+    - "bin/*"
+    - "config.ru"
+    - "Rakefile"
 
 Style/Documentation:
   Enabled: false
@@ -27,7 +27,7 @@ Style/EmptyMethod:
 
 Bundler/OrderedGems:
   Enabled: false
-  
+
 Lint/UnusedMethodArgument:
   Enabled: false
 
@@ -45,4 +45,4 @@ Metrics/AbcSize:
 
 Lint/MissingSuper:
   Exclude:
-    - 'app/components/**/*'
+    - "app/components/**/*"
