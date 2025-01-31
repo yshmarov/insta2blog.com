@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+
   GoodJob::Engine.middleware.use(Rack::Auth::Basic) do |username, password|
     ActiveSupport::SecurityUtils.secure_compare(Rails.application.credentials.dig(:http_auth, :username), username) &&
       ActiveSupport::SecurityUtils.secure_compare(Rails.application.credentials.dig(:http_auth, :password), password)
