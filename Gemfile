@@ -67,13 +67,13 @@ end
 
 group :production do
   gem 'rack-host-redirect'
+  gem 'honeybadger'
 end
 
 gem 'faraday'
 gem 'friendly_id'
 gem 'data_migrate'
 gem 'meta-tags'
-gem 'honeybadger'
 gem 'passwordless'
 gem 'pagy'
 gem 'good_job'
