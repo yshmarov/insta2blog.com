@@ -8,6 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="/manifest.json">
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag 'logo-214x214.png' %>
@@ -22,7 +29,7 @@
     <header>
       <%= render 'shared/wip_banner' %>
       <%= render 'shared/nav' %>
-      <div id="flash" class="break-normal right-2 mt-2 w-56 absolute space-y-2 z-10">
+      <div id="flash" class="absolute z-10 w-56 mt-2 space-y-2 break-normal right-2">
         <%= render 'shared/flash' %>
       </div>
     </header>
