@@ -16,7 +16,7 @@ Initially I was inspired with this idea after hearing of some guy who created "S
 
 This is a media channel that you completely own. Your own auto-generated website.
 
-Share urls to your posts on the blog to drive traffic to your website. 
+Share urls to your posts on the blog to drive traffic to your website.
 
 ### ✔️ Core features
 
@@ -29,29 +29,32 @@ You can search for posts content in the local copy of the account.
 Flow of connecting and using Instagram Basic Display API:
 
 1. Get token
-* authorization window
-* successfull authorization gives an access `code`
-* access `code` is exchanged for a `short_lived_access_token` (60 min valid)
-* `short_lived_access_token` is exchanged for a `long_lived_access_token` (60 days valid)
+
+- authorization window
+- successfull authorization gives an access `code`
+- access `code` is exchanged for a `short_lived_access_token` (60 min valid)
+- `short_lived_access_token` is exchanged for a `long_lived_access_token` (60 days valid)
 
 2. Get data
-`long_lived_access_token` can be used to get:
-* user profile data (`username`, `media_count`)
-* detailed `user_media` data
+   `long_lived_access_token` can be used to get:
+
+- user profile data (`username`, `media_count`)
+- detailed `user_media` data
 
 3. Refresh token
-`long_lived_access_token` should be refreshed every 59 days.
+   `long_lived_access_token` should be refreshed every 59 days.
 
 API limitations: it does not get
-* user avatar
-* user description
-* user website
-* media comments
-* media likes
-* media location
-* media stories
 
-**oAuth on localhost***
+- user avatar
+- user description
+- user website
+- media comments
+- media likes
+- media location
+- media stories
+
+**oAuth on localhost\***
 
 Set up `https://localhost:3000/instagram/callback` as a 'Valid OAuth Redirect URI', because Facebook allows only `https`, not `http`.
 
@@ -59,15 +62,15 @@ The redirect will go to the URL `https://localhost:3000/instagram/callback?code=
 
 ### 💻 Tech stack
 
-* ruby 3
-* rails 7
-* tailwind 3
-* importmap-rails
-* StimulusJS
-* Hotwire/Turbo
-* minitest
-* sidekiq (coming soon)
-* AWS S3 (coming soon)
+- ruby 3
+- rails 7
+- tailwind 3
+- importmap-rails
+- StimulusJS
+- Hotwire/Turbo
+- minitest
+- sidekiq (coming soon)
+- AWS S3 (coming soon)
 
 ### 🚀 Start the app
 
@@ -107,3 +110,10 @@ Got an idea 💡? [Open an issue](https://github.com/yshmarov/insta2blog.com/iss
 If you create a PR (if you can), preferably with tests 🙏.
 
 ### Thanks for taking your time, wanderer!
+
+TODO
+
+- fix PWA
+
+- cache.yml
+- cable.yml
